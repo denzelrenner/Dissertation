@@ -17,10 +17,10 @@ conda activate pipeline_pckgs
 
 Make a directory to store the lineage dataset 
 ```bash
-mkdir -p ~/all_gammaproteobacteria_data/busco_dataset/
+mkdir -p ~/all_gammaproteobacteria_data/busco_lineage_dataset/
 ```
 
 Download the gammaproteobacteria lineage dataset with busco and direct the output to the datasets directory created earlier
 ```bash
-busco --download_path ~/all_gammaproteobacteria_data/busco_dataset/ --download gammaproteobacteria_odb10
+busco --download_path ~/all_gammaproteobacteria_data/busco_lineage_dataset/ --download gammaproteobacteria_odb10
 ```
