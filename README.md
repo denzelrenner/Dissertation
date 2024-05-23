@@ -20,7 +20,7 @@ Make a directory to store the lineage dataset
 mkdir -p ~/all_gammaproteobacteria_data/busco_dataset/
 ```
 
-Download the dataset using busco to the datasets directory created earlier
+Download the gammaproteobacteria lineage dataset with busco and direct the output to the datasets directory created earlier
 ```bash
 busco --download_path ~/all_gammaproteobacteria_data/busco_dataset/ --download gammaproteobacteria_odb10
 ```
