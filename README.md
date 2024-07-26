@@ -124,7 +124,7 @@ Before we actually run rgi, we need to put the protein fasta files into their ow
 conda activate pipeline_pckgs
 ```
 
-2. We initally stored the protein fasta files for all 1348 files in the [Go to Part1 - Data Acquisition](#part1---data-acquisition) portion of this analysis. We now want to create a new directory which only has protein fasta files for the 1173 genomes. These files will act as input for RGI to then identify ARG families. To do this enter the command below.
+2. We initally stored the protein fasta files for all 1348 files in the [Data Acquisition](#part1---data-acquisition) portion of this analysis. We now want to create a new directory which only has protein fasta files for the 1173 genomes. These files will act as input for RGI to then identify ARG families. To do this enter the command below.
 ```bash
 python3 filtering_data_directories.py -id ~/all_gammaproteobacteria_data/assemblies/protein_fasta_files --input_file ~/all_gammaproteobacteria_data/busco_plotting_output_and_summary_files/busco_filtered_gammaproteobacteria_correction_names.txt -od ~/all_gammaproteobacteria_data/rgi_input_protein_fasta_1173_genomes
 ```
