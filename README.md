@@ -54,6 +54,8 @@ Add eggnog stuff to your bash profile
 
 # THE ANALYSIS
 
+You will notice a log_files directory, an all_gammaproteobacteria directory and a scripts directory.
+
 ## Part1 - Data Acquisition
 Before conducting any sort of analysis we need to get the nucleotide and protein fastas for different Gammaproteobacteria, as well as their associated metadata. Running the `data_acquisition_pipeline.sh` script will run the whole data acquisition pipeline for the data acquisition stage of the analysis. It first gets all the different complete and refseq (GCF) assemblies for different gammaproteobcteria from ncbi. This includes The accession code , organism name, assembly release data, completeness, and a whole battery of other metrics are for each species is written to an output file. Then the resulting file is filtered to remove duplicate assemblies, and between different strains of the same species, take the most recent assembly. All the different assemblies for our final list of gammaproteobacteria are then downloaded as zip files, and we put metrics like assembly length into a txt file. The R script `distribution_plotting.r` is also ran to produce a plot showing the distribution of the GC content and assembly lengths which would become useful when doing phylogenetic trees because sometimes considering GC content is important.
 
@@ -124,22 +126,67 @@ Before we actually run rgi, we need to put the protein fasta files into their ow
 conda activate pipeline_pckgs
 ```
 
-2. We initally stored the protein fasta files for all 1348 files in the [Data Acquisition](#part1---data-acquisition) portion of this analysis. We now want to create a new directory which only has protein fasta files for the 1173 genomes. These files will act as input for RGI to then identify ARG families. To do this enter the command below.
+2. We initally stored the protein fasta files for all 1348 files in the [Data Acquisition](#part1---data-acquisition) portion of this analysis. We now want to create a new directory which only has protein fasta files for the final dataset of 1173 genomes. These files will act as input for RGI to then identify ARG families. To do this enter the command below into the command line.
 ```bash
 python3 filtering_data_directories.py -id ~/all_gammaproteobacteria_data/assemblies/protein_fasta_files --input_file ~/all_gammaproteobacteria_data/busco_plotting_output_and_summary_files/busco_filtered_gammaproteobacteria_correction_names.txt -od ~/all_gammaproteobacteria_data/rgi_input_protein_fasta_1173_genomes
 ```
 
-## Part4 - Running Scoary
+3. Now we can actually run RGI to get the different ARG families. The script we will use is called `rgi_main_pipeline_1173_genomes.sh` and it uses some other python scripts to create a final list of ARG families. To accomplish this, follow the commands below.
+```bash
+sbatch ~/scripts/rgi_scripts/rgi_main_pipeline_1173_genomes.sh
+```
 
-## Part4A - Correlation
+This command will produce a directory called `~/all_gammaproteobacteria_data/rgi_output_1173_genomes/gene_family_files`, and within this directory there will be a file called `unique_gene_families.txt` and it contains a list of all ARG families used in this study
 
-## Part4B - Cytoscape
+## Part4 - Building Pan-genome
 
-## Part5 - Annotating the Pan-genome
-# Part5A - Goatools
+## Part5 - Running Scoary
+Now that we have the unique ARG families in our dataset, we essentially have the traits that will be used by scoary. For the purpose of our analysis we are interested in correlation and coincidence, rather than causative stuff. To do this you can simply enter the two command into the command line.
 
-# Part5B - COG Categories
+```bash
+conda activate pipeline_pckgs
 
+sbatch ~/scripts/scoary_scripts/main_scoary_pipeline_groups_1173genomes_NOPAIRWISE_with_groups
+```
+
+This script does a lot of different things and uses a lot of intermediate scripts within it. Each script is commented but here is what they do
+
+## Part5A - Correlation
+
+## Part5B - Cytoscape
+
+## Part6 - Annotating the Pan-genome
+
+We have successfully found genes that were positively or negatively correlated with the presence of the ARG families in this study. The next piece of analysis involves looking for enrichemnt of GO terms, and over-representation of COG categories in our positively and negatively correlated genes compared to the entire pan-genome. To do this, we first need to annotate the protein sequences for each gene in the pangenome with COG categories and GO terms. Then we can use GOATOOLS, and the SciPY python package to look for enrichment and over-representation.
+
+# Part 6A - EggNOG-mapper
+To annotate the pan-genome with GO terms and COG categories run the command below.
+
+```bash
+sbatch ~/scripts/eggnog_scripts/emapper_pangenome_input.sh
+```
+This will produce a file called something.annotations, and it contains a tsv of genes and their GO terms, and COG annotations.
+
+# Part6B - Goatools
+
+To accomplish this you can simply run the command below.
+
+```bash
+sbatch ~/scripts/goatools_scripts/run_goatools_1173genomes_UPDATED.sh
+```
+
+Again, to breakdown the script a bit and the output you get from running it
+
+# Part6C - COG Categories
+For the COG categories we want to . This is accomplished by running the commands below
+
+```bash
+conda activate pipeline_pckgs
+
+python3 ~/scripts/cog_scripts/cog_calculations.py -od ~/all_gammaproteobacteria_data/COG_calculation_1173_genomes --annotation_file ~/all_gammaproteobacteria_data/eggnog_test_WITH_GROUPS/whole_dataset.emapper.annotations --positively_correlated_genes ~/all_gammaproteobacteria_data/scoary_output_1173genomes_NOPAIRWISE_WITH_GROUPS/parsed_output_and_plotting_files_benjamini_hochberg/across_all_gene_families/master_positive_correlated_genes.tsv --negatively_correlated_genes ~/all_gammaproteobacteria_data/scoary_output_1173genomes_NOPAIRWISE_WITH_GROUPS/parsed_output_and_plotting_files_benjamini_hochberg/across_all_gene_families/master_negative_correlated_genes.tsv --Rtab_file ~/all_gammaproteobacteria_data/panta_output/panta_030pid_e7_LD07_split_1173_genomes_with_sflag_sotruenosplit/gene_presence_absence.Rtab
+```
+
+Again, this script does a lot of different things. It takes the annotations file produced from EggNOG-mapper in [the EggNOF-mapper step of the analysis](#part6A---EggNOG-mapper)
 
 
 # Conclusion
