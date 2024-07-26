@@ -4,7 +4,7 @@ All scripts required to run the analysis for my final individual project can be 
 
 Note: Unless on the cloud or stated otherwise, all command line code was ran on a Mac Intel i5
 
-conda activate pipeline_pckgs
+The order of the analysis carried out here is mostly the same as in the report so if there is a specific script or piece of code you may be interested in you can look for the header name for that analysis in the report, and find a similar heading name here.
 
 ## Project Title: An investigation into the association between host genetic elements and antibiotic resistant phenotype
 
@@ -47,6 +47,23 @@ Alternatively, the guidance below outlines the scripts,steps or commands that ha
 
 
 # THE ANALYSIS
+
+## Part1 - Data Acquisition
+Before conducting any sort of analysis we need to get the nucleotide and protein fastas for different Gammaproteobacteria, as well as their associated metadata. Running the `data_acquisition_pipeline.sh` script will run the whole data acquisition pipeline for the data acquisition stage of the analysis. It first gets all the different complete and refseq (GCF) assemblies for different gammaproteobcteria from ncbi. This includes The accession code , organism name, assembly release data, completeness, and a whole battery of other metrics are for each species is written to an output file. Then the resulting file is filtered to remove duplicate assemblies, and between different strains of the same species, take the most recent assembly. All the different assemblies for our final list of gammaproteobacteria are then downloaded as zip files, and we put metrics like assembly length into a txt file. The R script `distribution_plotting.r` is also ran to produce a plot showing the distribution of the GC content and assembly lengths which would become useful when doing phylogenetic trees because sometimes considering GC content is important.
+
+1. Activate conda environment with the tools the script uses
+```bash
+conda activate pipeline_pckgs
+```
+
+2. Run the script
+```bash
+sbatch ~/scripts/data_acquisition_pipeline.sh
+```
+
+This should produce three different directories. One directory is called `assemblies` and contains the differnet protein and nucleotide fasta files. Another directory is called `output_data` and this contains the list of gammaproteobacteria we accesed from NCBI. The final directory is called `metric_files` and this contains files with different metrics about every genome in the data liek N50 and assembly length.
+
+## Part2 - Quality Filtering
 
 To get all nucleotide and protein fasta files run this commmand
 python3 ~/scripts/get_nucleotide_and_protein_fasta.py -i ~/all_gammaproteobacteria_data/assemblies -d1 ~/all_gammaproteobacteria_data/assemblies/nucleotide_fasta_files -d2 ~/all_gammaproteobacteria_data/assemblies/protein_fasta_files
