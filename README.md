@@ -81,10 +81,14 @@ Now that we have successfully downloaded our genomes, we want to filter out geno
 
 ### ANI Filtering
 
+### BUSCO Filtering
+
 All the bacteria in our study are gammaproteobateria and so we need to use that specific lineage dataset when running busco. To download the lineage dataset follow the steps below
 
 Activate the conda environemnt with busco 
+```bash
 conda activate pipeline_pckgs
+```
 
 1. Activate the right conda env
 ```bash
@@ -101,7 +105,7 @@ mkdir -p ~/all_gammaproteobacteria_data/busco_lineage_dataset/
 busco --download_path ~/all_gammaproteobacteria_data/busco_lineage_dataset/ --download gammaproteobacteria_odb10
 ```
 
-4.Run busco and filter the genomes with a busco score of 90%
+4.Run busco and filter the genomes with a busco score of 90%. This script contains two other scripts which are important for plotting
 ```bash
 sbatch run_busco.sh
 ```
@@ -110,7 +114,20 @@ The important files form this is a directory called `busco_plotting_output_and_s
 
 
 ## Part3 - Finding ARG families
-this python3 filtering_data_directories.py -id ~/all_gammaproteobacteria_data/assemblies/protein_fasta_files --input_file ~/all_gammaproteobacteria_data/busco_plotting_output_and_summary_files/busco_filtered_gammaproteobacteria_correction_names.txt -od ~/all_gammaproteobacteria_data/rgi_input_protein_fasta_1173_genomes
+
+Now that we have  our final list of genomes to use in the analysis, we need to find the ARG families across all the 1137 genomes and create a list of all the unique ARG families found.
+
+Before we actually run rgi, we need to put the protein fasta files into their own unique directory. That is accomplished following the steps below
+
+1. Activate the conda env
+```bash
+conda activate pipeline_pckgs
+```
+
+2. We initally stored the protein fasta files for all 1348 files in the `Data Acquistion` portion of this analysis. We now want to create a new directory which only has protein fasta files for the 1173 genomes. These files will act as input for RGI to then identify ARG families. To do this enter the command below.
+```bash
+python3 filtering_data_directories.py -id ~/all_gammaproteobacteria_data/assemblies/protein_fasta_files --input_file ~/all_gammaproteobacteria_data/busco_plotting_output_and_summary_files/busco_filtered_gammaproteobacteria_correction_names.txt -od ~/all_gammaproteobacteria_data/rgi_input_protein_fasta_1173_genomes
+```
 
 ## Part4 - Running Scoary
 
