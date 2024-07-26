@@ -47,6 +47,8 @@ conda env create -f environment.yaml
 
 Alternatively, the guidance below outlines the scripts,steps or commands that have to be ran to install some of the tools needed to reproduce our results.
 
+Add eggnog stuff to your bash profile
+
 
 # THE ANALYSIS
 
