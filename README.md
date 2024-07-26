@@ -65,28 +65,61 @@ conda activate pipeline_pckgs
 sbatch ~/scripts/data_acquisition_pipeline.sh
 ```
 
-This should produce three different directories. One directory is called `assemblies` and contains the differnet protein and nucleotide fasta files. Another directory is called `output_data` and this contains the list of gammaproteobacteria we accesed from NCBI. The final directory is called `metric_files` and this contains files with different metrics about every genome in the data liek N50 and assembly length.
+3. Run another script to unzip the zip files and put all nucleotide and protein fasta files into separate directories 
+```bash
+python3 ~/scripts/get_nucleotide_and_protein_fasta.py -i ~/all_gammaproteobacteria_data/assemblies -d1 ~/all_gammaproteobacteria_data/assemblies/nucleotide_fasta_files -d2 ~/all_gammaproteobacteria_data/assemblies/protein_fasta_files
+```
+
+This should produce three different directories. One directory is called `assemblies` and contains zip files for each genome. Another directory is called `output_data` and this contains the list of gammaproteobacteria we accesed from NCBI. The final directory is called `metric_files` and this contains files with different metrics about every genome in the data liek N50 and assembly length.
 
 ## Part2 - Quality Filtering
 
-To get all nucleotide and protein fasta files run this commmand
-python3 ~/scripts/get_nucleotide_and_protein_fasta.py -i ~/all_gammaproteobacteria_data/assemblies -d1 ~/all_gammaproteobacteria_data/assemblies/nucleotide_fasta_files -d2 ~/all_gammaproteobacteria_data/assemblies/protein_fasta_files
+Now that we have successfully downloaded our genomes, we want to filter out genomes that have bad quality scores, and also remove any two genomes that appear genetically identical. To do this we first deduplicated the dataset using average nucelotide identity (ANI) and then BUSCO.
 
-conda deactivate 
-
-
+### ANI Filtering
 
 All the bacteria in our study are gammaproteobateria and so we need to use that specific lineage dataset when running busco. To download the lineage dataset follow the steps below
 
 Activate the conda environemnt with busco 
 conda activate pipeline_pckgs
 
-Make a directory to store the lineage dataset 
+1. Activate the right conda env
+```bash
+conda activate pipeline_pckgs
+```
+
+2.Make a directory to store the lineage dataset 
 ```bash
 mkdir -p ~/all_gammaproteobacteria_data/busco_lineage_dataset/
 ```
 
-Download the gammaproteobacteria lineage dataset with busco and direct the output to the datasets directory created earlier
+3.Download the gammaproteobacteria lineage dataset with busco and direct the output to the datasets directory created earlier
 ```bash
 busco --download_path ~/all_gammaproteobacteria_data/busco_lineage_dataset/ --download gammaproteobacteria_odb10
 ```
+
+4.Run busco and filter the genomes with a busco score of 90%
+```bash
+sbatch run_busco.sh
+```
+
+The important files form this is a directory called `busco_plotting_output_and_summary_files` which contains a pdf file showing the different busco scors for completeness, duplicated etc.
+
+
+## Part3 - Finding ARG families
+this python3 filtering_data_directories.py -id ~/all_gammaproteobacteria_data/assemblies/protein_fasta_files --input_file ~/all_gammaproteobacteria_data/busco_plotting_output_and_summary_files/busco_filtered_gammaproteobacteria_correction_names.txt -od ~/all_gammaproteobacteria_data/rgi_input_protein_fasta_1173_genomes
+
+## Part4 - Running Scoary
+
+## Part4A - Correlation
+
+## Part4B - Cytoscape
+
+## Part5 - Annotating the Pan-genome
+# Part5A - Goatools
+
+# Part5B - COG Categories
+
+
+
+# Conclusion
