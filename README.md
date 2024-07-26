@@ -146,7 +146,7 @@ Now that we have the unique ARG families in our dataset, we essentially have the
 ```bash
 conda activate pipeline_pckgs
 
-sbatch ~/scripts/scoary_scripts/main_scoary_pipeline_groups_1173genomes_NOPAIRWISE_with_groups
+sbatch ~/scripts/scoary_scripts/main_scoary_pipeline_groups_1173genomes_NOPAIRWISE_with_groups.sh
 ```
 
 This script does a lot of different things and uses a lot of intermediate scripts within it. Each script is commented but here is what they do
@@ -154,6 +154,10 @@ This script does a lot of different things and uses a lot of intermediate script
 ## Part5A - Correlation
 
 ## Part5B - Cytoscape
+Because the script above already produced the input needed for cytoscape there is no actual code for this section. Only a series of steps on how to reproduce the figures used in the paper.
+
+### Figure X
+To make figure X you first
 
 ## Part6 - Annotating the Pan-genome
 
