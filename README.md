@@ -171,7 +171,7 @@ To make figure X you first
 We have successfully found genes that were positively or negatively correlated with the presence of the ARG families in this study. The next piece of analysis involves looking for enrichemnt of GO terms, and over-representation of COG categories in our positively and negatively correlated genes compared to the entire pan-genome. To do this, we first need to annotate the protein sequences for each gene in the pangenome with COG categories and GO terms. Then we can use GOATOOLS, and the SciPY python package to look for enrichment and over-representation.
 
 # Part 6A - EggNOG-mapper
-To annotate the pan-genome with GO terms and COG categories run the command below.
+To annotate the pan-genome with GO terms and COG categories run the command below. Verified by me
 
 ```bash
 sbatch ~/scripts/eggnog_scripts/emapper_pangenome_input.sh
@@ -180,7 +180,7 @@ This will produce a file called something.annotations, and it contains a tsv of 
 
 # Part6B - Goatools
 
-To accomplish this you can simply run the command below.
+To accomplish this you can simply run the command below. Verified by me
 
 ```bash
 sbatch ~/scripts/goatools_scripts/run_goatools_1173genomes_UPDATED.sh
