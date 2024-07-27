@@ -203,7 +203,7 @@ Again, this script does a lot of different things. It takes the annotations file
 There were a few supplmentary figures we produced for the report. Below is code and steps on how to get those figures.
 
 ### Plot for Pipeline
-The first thing we need for this is a file called `project_pipeline.tsv`. Each line of this file details the 'flow' of the pipeline where one step (the source) is mapped to the next (the target). The layer of the heirachy we want the step to be on is also included on the line. We will also need to use Cytoscape for this and a python script that converts the `project_pipeline.tsv` file to a format acceptable py Cytoscape. To accomplish all this follow the steps below.
+This bit of analysis needs to be carried out on your local machine. The first thing we need for this is a file called `project_pipeline.tsv`. Each line of this file details the 'flow' of the pipeline where one step (the source) is mapped to the next (the target). The layer of the heirachy we want the step to be on is also included on the line. We will also need to use Cytoscape for this and a python script that converts the `project_pipeline.tsv` file to a format acceptable py Cytoscape. To accomplish all this follow the steps below.
 
 1. Create input for Cytoscape. Move into a directory with the project_pipeline.tsv file and run the command below.
 ```bash
@@ -211,8 +211,20 @@ python3 create_cytoscape_pipeline.py
 ```
 This creates a new file called `cytoscape_project_pipeline.tsv` and will act as the input file for cytoscape
 
-2. Open Cytoscape and load the tsv file
+2. Open Cytoscape and load the `cytoscape_project_pipeline.tsv` file by selecting `Import Network From File system` then navigating through your file structure till you find the right file.
 
-, Adjust the colour of each node to your liking by 
+3. A pop up will appear showing which the first two columns columns in the tsv file are assigned as the target and source. The final column which details the position in the heirachy we want the different steps to be has the header `Layer` and we clicked on the black arrow next to the header name. From the drop-down menu that appears we select the `Source Node Attribute` option and this makes it so we can use one of Cytoscape layouts to organise the steps in our pipeline based on this column. 
+
+4. When the network has loaded in go to `Layout` in the menu bar on your local PC and select yfiles Hierarchic Layout.
+
+5. On the left of the cytoscape window there should be a menu bar with option like `Network` and `Style`. Select the `Style` option and change the style option from default to Minimal. 
+   
+6. After completing that, we should still be in the Style options for Nodes. At the bottom of the properties page uncheck the box saying `Lock node width and height`. We should be able to see the different properties for the nodes and these specific property values should be changed by selecting the `Def.` column and entering the values mentioned below.
+   
+Set Border Width to 1
+Set Label Font Size 10
+Set Width to 175
+ 
+7. To adjust the colour of each node to your liking, select the `map.` column for the `Fill Color` property. There should be two rows called `Column` and `Mapping Type`. For `Column` select `name` from the dropdown menu, and for `Mapping Type` select `Discrete Mapping`. This will produce more rows for each step in the analysis and you can change the colours of their boxes here.
 
 # Conclusion
