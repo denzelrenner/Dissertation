@@ -36,6 +36,7 @@ These are all the tools that were used in our analysis with versions and links p
 |[PyANI](https://github.com/widdowquinn/pyani)|version 6.8.2|Pritchard, L., Glover, R.H., Humphris, S., Elphinstone, J.G. and Toth, I.K., 2016. Genomics and taxonomy in diagnostics for food security: soft-rotting enterobacterial plant pathogens. Analytical methods, 8(1), pp.12-24.|
 |[NCBI-Datasets](https://github.com/ncbi/datasets)|version 11|O’Leary, N.A., Cox, E., Holmes, J.B., Anderson, W.R., Falk, R., Hem, V., Tsuchiya, M.T., Schuler, G.D., Zhang, X., Torcivia, J. and Ketter, A., 2024. Exploring and retrieving sequence and metadata for species across the tree of life with NCBI Datasets. Scientific Data, 11(1), p.732.|
 |[Prokka](https://github.com/tseemann/prokka)|version 11|Seemann, T., 2014. Prokka: rapid prokaryotic genome annotation. Bioinformatics, 30(14), pp.2068-2069.|
+|[Cytoscape](https://github.com/tseemann/prokka)|version 11|Seemann, T., 2014. Prokka: rapid prokaryotic genome annotation. Bioinformatics, 30(14), pp.2068-2069.|
 
 ## Tool intallation 
 
@@ -191,6 +192,17 @@ python3 ~/scripts/cog_scripts/cog_calculations.py -od ~/all_gammaproteobacteria_
 ```
 
 Again, this script does a lot of different things. It takes the annotations file produced from EggNOG-mapper in [the EggNOG-mapper step of the analysis](#part6a---eggnog-mapper)
+
+# Part7 - Supplementary Figures
+There were a few supplmentary figures we produced for the report. Below is code and steps on how to get those figures.
+
+### Plot for Pipeline
+The first thing we need for this is a file called `project_pipeline.tsv`. Each line of this file details the 'flow' of the pipeline where one step (the source) is mapped to the next (the target). The layer of the heirachy we want the step to be on is also included on the line. We will also need to use Cytoscape for this and a python script that converts the `project_pipeline.tsv` file to a format acceptable py Cytoscape. To accomplish all this follow the steps below.
+
+1. Create input for Cytoscape. Move into a directory with the project_pipeline.tsv file and run the command below.
+```bash
+python3 create_cytoscape_pipeline.py
+```
 
 
 # Conclusion
