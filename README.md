@@ -20,6 +20,12 @@ The aim of this study was to examine the relationship between antibiotic resista
 ## What are the expected outcomes?
 We hypothesize that there will be several genes, belonging to different compartments of the cell, that are correlated with the presence of ARG families, and these correlated genes will be enriched for different GO terms and COG categories relative to the entire pangenome that ultimatley affect the resistant phenotype
 
+# Table of Contents
+
+[Part1 - Data Acquisition](#part1---data-acquisition)
+[Part2 - Quality Filtering](#part2---quality-filtering)
+[Part3 - Finding ARG families](#part3---finding-arg-families)
+
 # Prerequisites
 
 ## Tool versions and links
@@ -36,7 +42,7 @@ These are all the tools that were used in our analysis with versions and links p
 |[PyANI](https://github.com/widdowquinn/pyani)|version 6.8.2|Pritchard, L., Glover, R.H., Humphris, S., Elphinstone, J.G. and Toth, I.K., 2016. Genomics and taxonomy in diagnostics for food security: soft-rotting enterobacterial plant pathogens. Analytical methods, 8(1), pp.12-24.|
 |[NCBI-Datasets](https://github.com/ncbi/datasets)|version 11|O’Leary, N.A., Cox, E., Holmes, J.B., Anderson, W.R., Falk, R., Hem, V., Tsuchiya, M.T., Schuler, G.D., Zhang, X., Torcivia, J. and Ketter, A., 2024. Exploring and retrieving sequence and metadata for species across the tree of life with NCBI Datasets. Scientific Data, 11(1), p.732.|
 |[Prokka](https://github.com/tseemann/prokka)|version 11|Seemann, T., 2014. Prokka: rapid prokaryotic genome annotation. Bioinformatics, 30(14), pp.2068-2069.|
-|[Cytoscape](https://github.com/tseemann/prokka)|version 11|Seemann, T., 2014. Prokka: rapid prokaryotic genome annotation. Bioinformatics, 30(14), pp.2068-2069.|
+|[Cytoscape](https://github.com/tseemann/prokka)|version 3.10.2|Seemann, T., 2014. Prokka: rapid prokaryotic genome annotation. Bioinformatics, 30(14), pp.2068-2069.|
 
 ## Tool intallation 
 
@@ -82,9 +88,9 @@ This should produce three different directories. One directory is called `assemb
 
 Now that we have successfully downloaded our genomes, we want to filter out genomes that have bad quality scores, and also remove any two genomes that appear genetically identical. To do this we first deduplicated the dataset using average nucelotide identity (ANI) and then BUSCO.
 
-### ANI Filtering
+### Part2A - ANI Filtering
 
-### BUSCO Filtering
+### Part2B - BUSCO Filtering
 
 All the bacteria in our study are gammaproteobateria and so we need to use that specific lineage dataset when running busco. To download the lineage dataset follow the steps below
 
@@ -203,6 +209,10 @@ The first thing we need for this is a file called `project_pipeline.tsv`. Each l
 ```bash
 python3 create_cytoscape_pipeline.py
 ```
+This creates a new file called `cytoscape_project_pipeline.tsv` and will act as the input file for cytoscape
 
+2. Open Cytoscape and load the tsv file
+
+, Adjust the colour of each node to your liking by 
 
 # Conclusion
