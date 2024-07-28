@@ -170,7 +170,7 @@ To make figure X you first
 
 We have successfully found genes that were positively or negatively correlated with the presence of the ARG families in this study. The next piece of analysis involves looking for enrichemnt of GO terms, and over-representation of COG categories in our positively and negatively correlated genes compared to the entire pan-genome. To do this, we first need to annotate the protein sequences for each gene in the pangenome with COG categories and GO terms. Then we can use GOATOOLS, and the SciPY python package to look for enrichment and over-representation.
 
-# Part 6A - EggNOG-mapper
+# Part6A - EggNOG-mapper
 To annotate the pan-genome with GO terms and COG categories run the command below. Verified by me
 
 ```bash
@@ -193,6 +193,8 @@ For the COG categories we want to . This is accomplished by running the commands
 
 ```bash
 conda activate pipeline_pckgs
+
+sbatch run_COG_analysis.sh
 
 python3 ~/scripts/cog_scripts/cog_calculations.py -od ~/all_gammaproteobacteria_data/COG_calculation_1173_genomes --annotation_file ~/all_gammaproteobacteria_data/eggnog_pangenome/whole_dataset.emapper.annotations --positively_correlated_genes ~/all_gammaproteobacteria_data/scoary_output_1173genomes_NOPAIRWISE_WITH_GROUPS/parsed_output_and_plotting_files_benjamini_hochberg/across_all_gene_families/master_positive_correlated_genes.tsv --negatively_correlated_genes ~/all_gammaproteobacteria_data/scoary_output_1173genomes_NOPAIRWISE_WITH_GROUPS/parsed_output_and_plotting_files_benjamini_hochberg/across_all_gene_families/master_negative_correlated_genes.tsv --Rtab_file ~/all_gammaproteobacteria_data/panta_output/panta_030pid_e7_LD07_split_1173_genomes_with_sflag_sotruenosplit/gene_presence_absence.Rtab
 ```
