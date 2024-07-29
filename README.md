@@ -165,8 +165,6 @@ export EGGNOG_DATA_DIR=~/all_gammaproteobacteria_data/eggnog-mapper-data
 mkdir -p ~/all_gammaproteobacteria_data/eggnog-mapper-data
 ```
 
-
-
 To install cytoscape follow the guidance on the [cytoscape web page](https://cytoscape.org/)
 
 Add eggnog stuff to your bash profile
