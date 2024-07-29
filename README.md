@@ -2,7 +2,8 @@
 
 All scripts required to run the analysis for my final individual project can be found here
 
-Note: Unless on the cloud or stated otherwise, all command line code was ran on a Mac Intel i5
+Note: Unless on the cloud or stated otherwise, all command line code was ran on a Mac Intel i5. In all sbatch scripts you would need to change the #SBATCH --output and
+#SBATCH --error lines at the beginning of the script such that output and errors are written to your own personal directory.
 
 The order of the analysis carried out here is mostly the same as in the report so if there is a specific script or piece of code you may be interested in you can look for the header name for that analysis in the report, and find a similar heading name here.
 
@@ -55,13 +56,118 @@ rgi
 
 To install the environments with the different tools necessary to reproduce this analysis you could install the different yaml files we used for the analysis following the command below.
 
-Firstly copy the yaml file to the HPC using rsync or scp and then type in the following command.
+The yaml files themselves were downloaded from my environments by following the format below:
+```bash
+conda activate env
+conda env export > env_name.yaml
+```
+
+Firstly copy the yaml files to the HPC using rsync or scp and then type in the following commands. This will give you the same conda environment I have used in my analysis without having to install any packages yourself.
 
 ```bash
-conda env create -f environment.yaml
+conda env create -f goatoolsenv.yaml
+conda env create -f eggnogenv.yaml
+conda env create -f pantaenv.yaml
+conda env create -f rgienv.yaml
+conda env create -f pyanienv.yaml
+conda env create -f pipeline_pckgs.yaml
+conda env create -f Renv.yaml
 ```
 
 Alternatively, the guidance below outlines the scripts,steps or commands that have to be ran to install some of the tools needed to reproduce our results.
+
+To install prokka,busco,ncbi datasets, and scoary run this command
+
+```bash
+sbatch pipeline_tools_install.sh
+```
+
+To install pyani run the command below
+
+```bash
+sbatch installing_pyani.sh
+```
+
+To install rgi run the command below
+
+```bash
+sbatch installing_RGI.sh 
+```
+
+To install panta follow the steps below
+
+1.Download the [github repository](https://github.com/amromics/panta) for panta onto your local machine. The directory should be called panta-main
+
+2.Unzip the file and scp it to the scripts folder on the cloud
+
+3.Then move into the `panta-main` directory and run these commands in the command line:
+
+```bash
+conda create -y -c conda-forge -c defaults --name panta python=3.10 mamba
+conda activate panta
+mamba install -y -c conda-forge -c bioconda -c anaconda -c defaults  --file requirements.txt
+pip install .
+```
+
+To install goatools we followed the series of steps outlined below:
+
+1. Install goatools using this script.
+
+```bash
+sbatch installing_goatools.sh 
+```
+
+2. Activate the goatools env and install this module which caused an error when trying to run one of the goatools scripts
+
+```bash
+pip install docopt
+```
+
+3. Update goatools with the command below
+
+```bash
+pip install -U goatools
+```
+
+To set up an environment we use when plotting figures using R on the cloud run the command below:
+```bash
+sbatch installing_Renv.sh 
+```
+
+To install eggnog and all the associated files needed for the tool follow the steps below:
+
+1. Go on the [github page for eggnog](https://github.com/eggnogdb/eggnog-mapper) and clone the repository, then send to ADA with scp or Rsync
+
+2. Unzip the cloned repository on ADA
+
+3. create a conda env for eggnog by running the command below
+
+```bash
+conda create --name eggnog python=3.8 -y
+```
+
+4. Go into the unzipped github directory and run
+
+```bash
+conda install --file requirements.txt
+```
+
+5. Add these two lines to your bash profile on ADA `~/.bash_profile`.
+
+```bash
+export PATH=~/scripts/eggnog_scripts/eggnog-mapper-master:~/scripts/eggnog_scripts/eggnog-mapper-master/eggnogmapper/bin:"$PATH"
+export EGGNOG_DATA_DIR=~/all_gammaproteobacteria_data/eggnog-mapper-data
+```
+
+6.Make the directory that the database gets put into when running emapper
+
+```bash
+mkdir -p ~/all_gammaproteobacteria_data/eggnog-mapper-data
+```
+
+
+
+To install cytoscape follow the guidance on the [cytoscape web page](https://cytoscape.org/)
 
 Add eggnog stuff to your bash profile
 
