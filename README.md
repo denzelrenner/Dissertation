@@ -168,23 +168,26 @@ This command will produce a directory called `~/all_gammaproteobacteria_data/rgi
 
 To begin with we will actually be building the pan-genome. We tried using the roary tool but it just didnt work with our data so we tried using panta and the run was able to finish. Keep in mind this takes 5 days to complete with max resources. To build the pan-genome panta needs the gff3 files produced from prokka so the first thing we need to do is run prokka to get gff files for our 1173 genomes
 
-1.ff
+1.Running the command below will run prokka for all the 1173 genomes in the study. The gff files will be located in the directory with this path `~/all_gammaproteobacteria_data/prokka_output_files_busco_filtered_input/all_species_gff`.
 
-2. Now that is done you can run Panta by running the command below
+```bash
+sbatch ~/scripts/run_prokka.sh
+```
+
+2. Now that is done you can run Panta by running the command below. It will use the gff files just produced to build the pan-genome
 
 ```bash
 sbatch ~/scripts/panta_scripts/panta_030pid_e7_LD07_split_1173genomes.sh
 ```
 
-
-To create the plot for the pangenome you MUST BE ON YOUR LOCAL MACHINE. You must also have matplot lib version 3.8.3 installed and numpy 1.25.0 installed as well. Once you have those installed go to the command line and run the command below. This will open a new window with the pan-genome plot present
+3. To create the plot for the pan-genome YOU MUST BE ON YOUR LOCAL MACHINE. You must also have matplot lib version 3.8.3 installed and numpy 1.25.0 installed as well. Once you have those installed go to the command line and run the command below. This will open a new window with the pan-genome plot present and you can take a screenshot or save it to your machine.
 
 ```bash
 python3 pangenome_plot.py
 ```
 
 ## Part5 - Running Scoary
-Now that we have the unique ARG families in our dataset, we essentially have the traits that will be used by scoary. For the purpose of our analysis we are interested in correlation and coincidence, rather than causative stuff. To do this you can simply enter the two command into the command line.
+Now that we have the unique ARG families in our dataset, we essentially have the traits that will be used by scoary. For the purpose of our analysis we are interested in correlation and coincidence, rather than causative interpretations. To do this you can simply enter the two command into the command line.
 
 ```bash
 conda activate pipeline_pckgs
