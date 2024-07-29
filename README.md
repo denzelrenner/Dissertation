@@ -302,15 +302,16 @@ python3 pangenome_plot.py
 ## Part5 - Running Scoary
 Now that we have the unique ARG families in our dataset, we essentially have the traits that will be used by scoary. For the purpose of our analysis we are interested in correlation and coincidence, rather than causative interpretations. To do this you can simply enter the two command into the command line.
 
+## Part5A - Correlation
+
 ```bash
 conda activate pipeline_pckgs
 
 sbatch ~/scripts/scoary_scripts/main_scoary_pipeline_groups_1173genomes_NOPAIRWISE_with_groups.sh
 ```
 
-This script does a lot of different things and uses a lot of intermediate scripts within it. Each script is commented but here is what they do
+This script does a lot of different things and uses a lot of intermediate scripts within it. Each script is commented but here is what they do. The two most important directories are the `~/all_gammaproteobacteria_data/scoary_output_1173genomes_NOPAIRWISE/parsed_output_and_plotting_files_bonferroni/across_all_gene_families` and `all_gammaproteobacteria_data/scoary_output_1173genomes_NOPAIRWISE/parsed_output_and_plotting_files_benjamini_hochberg/across_all_gene_families`. These contain files called `master_positive_correlated_genes.tsv` and `master_negative_correlated_genes.tsv`. Each of these files contain genes that were positively or negatively correlated with different the different ARG families we used, and they represent our pool of genes we use in downstream analysis.
 
-## Part5A - Correlation
 
 ## Part5B - Cytoscape
 Because the script above already produced the input needed for cytoscape there is no actual code for this section. Only a series of steps on how to reproduce the figures used in the paper.
