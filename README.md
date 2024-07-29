@@ -147,6 +147,12 @@ This command will produce a directory called `~/all_gammaproteobacteria_data/rgi
 
 ## Part4 - Building Pan-genome
 
+To create the plot for the pangenome you MUST BE ON YOUR LOCAL MACHINE. You must also have matplot lib version 3.8.3 installed and numpy 1.25.0 installed as well. Once you have those installed go to the command line and run the command below. This will open a new window with the pan-genome plot present
+
+```bash
+python3 pangenome_plot.py
+```
+
 ## Part5 - Running Scoary
 Now that we have the unique ARG families in our dataset, we essentially have the traits that will be used by scoary. For the purpose of our analysis we are interested in correlation and coincidence, rather than causative stuff. To do this you can simply enter the two command into the command line.
 
