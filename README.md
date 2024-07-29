@@ -31,18 +31,25 @@ We hypothesize that there will be several genes, belonging to different compartm
 ## Tool versions and links
 These are all the tools that were used in our analysis with versions and links provided where applicable. Dependencies for certain packages, and their versions, are placed in parentheses. Some references were chosen based on what was recommended on the tool's online help page/documentation.
 
+busco
+scoary
+pyani
+datasets
+prokka
+rgi
+
 | Tool | Version | Reference(Harvard Style) |
 |------|---------|-----------|
-|[PanTA](https://github.com/amromics/panta)|NA| Le, D.Q., Nguyen, T.A., Nguyen, S.H., Nguyen, T.T., Nguyen, C.H., Phung, H.T., Ho, T.H., Vo, N.S., Nguyen, T., Nguyen, H.A. and Cao, M.D., 2023. Efficient inference of large pangenomes with PanTA. bioRxiv, pp.2023-07.|
-|[RGI](https://github.com/arpcard/rgi)|version 2.9.0+ (uses NCBI BLAST 2.9.0+)| Alcock, B.P., Huynh, W., Chalil, R., Smith, K.W., Raphenya, A.R., Wlodarski, M.A., Edalatmand, A., Petkau, A., Syed, S.A., Tsang, K.K. and Baker, S.J., 2023. CARD 2023: expanded curation, support for machine learning, and resistome prediction at the Comprehensive Antibiotic Resistance Database. Nucleic acids research, 51(D1), pp.D690-D699.|
-|[Scoary](https://github.com/AdmiralenOla/Scoary)|NA| Brynildsrud, O., Bohlin, J., Scheffer, L. and Eldholm, V., 2016. Rapid scoring of genes in microbial pan-genome-wide association studies with Scoary. Genome biology, 17, pp.1-9.|
-|[Eggnog-mapper](https://github.com/eggnogdb/eggnog-mapper)|NA|Cantalapiedra, C.P., Hernández-Plaza, A., Letunic, I., Bork, P. and Huerta-Cepas, J., 2021. eggNOG-mapper v2: functional annotation, orthology assignments, and domain prediction at the metagenomic scale. Molecular biology and evolution, 38(12), pp.5825-5829., Huerta-Cepas, J., Szklarczyk, D., Heller, D., Hernández-Plaza, A., Forslund, S.K., Cook, H., Mende, D.R., Letunic, I., Rattei, T., Jensen, L.J. and von Mering, C., 2019. eggNOG 5.0: a hierarchical, functionally and phylogenetically annotated orthology resource based on 5090 organisms and 2502 viruses. Nucleic acids research, 47(D1), pp.D309-D314.|
-|[GOATOOLS](https://github.com/tanghaibao/goatools)|(ColabFold v1.5.5: AlphaFold2 using MMseqs2|Klopfenstein, D.V., Zhang, L., Pedersen, B.S., Ramírez, F., Warwick Vesztrocy, A., Naldi, A., Mungall, C.J., Yunes, J.M., Botvinnik, O., Weigel, M. and Dampier, W., 2018. GOATOOLS: A Python library for Gene Ontology analyses. Scientific reports, 8(1), pp.1-17.|
-|[BUSCO](https://gitlab.com/ezlab/busco)|version 98.0|Simão, F.A., Waterhouse, R.M., Ioannidis, P., Kriventseva, E.V. and Zdobnov, E.M., 2015. BUSCO: assessing genome assembly and annotation completeness with single-copy orthologs. Bioinformatics, 31(19), pp.3210-3212., Manni, M., Berkeley, M.R., Seppey, M., Simão, F.A. and Zdobnov, E.M., 2021. BUSCO update: novel and streamlined workflows along with broader and deeper phylogenetic coverage for scoring of eukaryotic, prokaryotic, and viral genomes. Molecular biology and evolution, 38(10), pp.4647-4654.|
-|[PyANI](https://github.com/widdowquinn/pyani)|version 6.8.2|Pritchard, L., Glover, R.H., Humphris, S., Elphinstone, J.G. and Toth, I.K., 2016. Genomics and taxonomy in diagnostics for food security: soft-rotting enterobacterial plant pathogens. Analytical methods, 8(1), pp.12-24.|
-|[NCBI-Datasets](https://github.com/ncbi/datasets)|version 11|O’Leary, N.A., Cox, E., Holmes, J.B., Anderson, W.R., Falk, R., Hem, V., Tsuchiya, M.T., Schuler, G.D., Zhang, X., Torcivia, J. and Ketter, A., 2024. Exploring and retrieving sequence and metadata for species across the tree of life with NCBI Datasets. Scientific Data, 11(1), p.732.|
-|[Prokka](https://github.com/tseemann/prokka)|version 11|Seemann, T., 2014. Prokka: rapid prokaryotic genome annotation. Bioinformatics, 30(14), pp.2068-2069.|
-|[Cytoscape](https://github.com/tseemann/prokka)|version 3.10.2|Seemann, T., 2014. Prokka: rapid prokaryotic genome annotation. Bioinformatics, 30(14), pp.2068-2069.|
+|[PanTA](https://github.com/amromics/panta)|Version 1.0.0| Le, D.Q., Nguyen, T.A., Nguyen, S.H., Nguyen, T.T., Nguyen, C.H., Phung, H.T., Ho, T.H., Vo, N.S., Nguyen, T., Nguyen, H.A. and Cao, M.D., 2023. Efficient inference of large pangenomes with PanTA. bioRxiv, pp.2023-07.|
+|[RGI](https://github.com/arpcard/rgi)|Version 6.0.3| Alcock, B.P., Huynh, W., Chalil, R., Smith, K.W., Raphenya, A.R., Wlodarski, M.A., Edalatmand, A., Petkau, A., Syed, S.A., Tsang, K.K. and Baker, S.J., 2023. CARD 2023: expanded curation, support for machine learning, and resistome prediction at the Comprehensive Antibiotic Resistance Database. Nucleic acids research, 51(D1), pp.D690-D699.|
+|[Scoary](https://github.com/AdmiralenOla/Scoary)|Version 1.6.16| Brynildsrud, O., Bohlin, J., Scheffer, L. and Eldholm, V., 2016. Rapid scoring of genes in microbial pan-genome-wide association studies with Scoary. Genome biology, 17, pp.1-9.|
+|[Eggnog-mapper (DIAMOND)](https://github.com/eggnogdb/eggnog-mapper)|Version 5.0.2 (Version 2.0.11) |Cantalapiedra, C.P., Hernández-Plaza, A., Letunic, I., Bork, P. and Huerta-Cepas, J., 2021. eggNOG-mapper v2: functional annotation, orthology assignments, and domain prediction at the metagenomic scale. Molecular biology and evolution, 38(12), pp.5825-5829., Huerta-Cepas, J., Szklarczyk, D., Heller, D., Hernández-Plaza, A., Forslund, S.K., Cook, H., Mende, D.R., Letunic, I., Rattei, T., Jensen, L.J. and von Mering, C., 2019. eggNOG 5.0: a hierarchical, functionally and phylogenetically annotated orthology resource based on 5090 organisms and 2502 viruses. Nucleic acids research, 47(D1), pp.D309-D314.|
+|[GOATOOLS](https://github.com/tanghaibao/goatools)|Version 1.4.12|Klopfenstein, D.V., Zhang, L., Pedersen, B.S., Ramírez, F., Warwick Vesztrocy, A., Naldi, A., Mungall, C.J., Yunes, J.M., Botvinnik, O., Weigel, M. and Dampier, W., 2018. GOATOOLS: A Python library for Gene Ontology analyses. Scientific reports, 8(1), pp.1-17.|
+|[BUSCO](https://gitlab.com/ezlab/busco)|Version 5.4.3|Simão, F.A., Waterhouse, R.M., Ioannidis, P., Kriventseva, E.V. and Zdobnov, E.M., 2015. BUSCO: assessing genome assembly and annotation completeness with single-copy orthologs. Bioinformatics, 31(19), pp.3210-3212., Manni, M., Berkeley, M.R., Seppey, M., Simão, F.A. and Zdobnov, E.M., 2021. BUSCO update: novel and streamlined workflows along with broader and deeper phylogenetic coverage for scoring of eukaryotic, prokaryotic, and viral genomes. Molecular biology and evolution, 38(10), pp.4647-4654.|
+|[PyANI](https://github.com/widdowquinn/pyani)|Version 0.2.12|Pritchard, L., Glover, R.H., Humphris, S., Elphinstone, J.G. and Toth, I.K., 2016. Genomics and taxonomy in diagnostics for food security: soft-rotting enterobacterial plant pathogens. Analytical methods, 8(1), pp.12-24.|
+|[NCBI-Datasets](https://github.com/ncbi/datasets)|version 16.14.0|O’Leary, N.A., Cox, E., Holmes, J.B., Anderson, W.R., Falk, R., Hem, V., Tsuchiya, M.T., Schuler, G.D., Zhang, X., Torcivia, J. and Ketter, A., 2024. Exploring and retrieving sequence and metadata for species across the tree of life with NCBI Datasets. Scientific Data, 11(1), p.732.|
+|[Prokka](https://github.com/tseemann/prokka)|Version 1.14.6|Seemann, T., 2014. Prokka: rapid prokaryotic genome annotation. Bioinformatics, 30(14), pp.2068-2069.|
+|[Cytoscape](https://github.com/tseemann/prokka)|Version 3.10.2|Seemann, T., 2014. Prokka: rapid prokaryotic genome annotation. Bioinformatics, 30(14), pp.2068-2069.|
 
 ## Tool intallation 
 
@@ -112,11 +119,6 @@ Rscript ANI_plots.R
 ### Part2B - BUSCO Filtering
 
 All the bacteria in our study are gammaproteobateria and so we need to use that specific lineage dataset when running busco. To download the lineage dataset follow the steps below
-
-Activate the conda environemnt with busco 
-```bash
-conda activate pipeline_pckgs
-```
 
 1. Activate the right conda env
 ```bash
@@ -268,7 +270,35 @@ Set Width to 175
  
 7. To adjust the colour of each node to your liking, select the `map.` column for the `Fill Color` property. There should be two rows called `Column` and `Mapping Type`. For `Column` select `name` from the dropdown menu, and for `Mapping Type` select `Discrete Mapping`. This will produce more rows for each step in the analysis and you can change the colours of their boxes here.
 
+### Plot for busco stats and assembly length
+This script will also have to be ran from your LOCAL MACHINE. Ensure you have R downloaded, and these version for these packages:
+"ggplot2" -> ‘3.4.4’
+tidyr -> ‘1.3.0’
+gridExtra -> 2.3
+grid -> ‘4.3.1’
 
+Once those are all downloaded, you want to use scp or rsync to copy the file with all the busco metrics data for our 1173 genomes from ADA. The file you need has the path `~/all_gammaproteobacteria_data/busco_plotting_output_and_summary_files/sorted_by_complete_all_species_busco_metrics.tsv`. Once you have done that you can  run this command from your local machine. Make sure the R script is in your current directory. The file produced from this script will be called ``. The first argument of the command is the working directory you want to set, and the second is the path to the `sorted_by_complete_all_species_busco_metrics.tsv` file on your machine.
+
+```bash
+Rscript plot_busco_completeness.R ./ sorted_by_complete_all_species_busco_metrics.tsv
+```
+
+### Plot for ANI values
+To create the figure for the ANI values between species you need to copy the file with this path to your LOCAL MACHINE. The file path is `all_gammaproteobacteria_data/ANIm_output/ANIm_percentage_identity.tab`. Once on your local machine, you need to run the commands below and you will produce a plot called `ANI_distribution.pdf`.
+
+1. First run this python command which takes the ANIm identity matrix produced by ANI.
+
+```bash
+python3 ANImatrix_to_list.py --output_directory ./ -i ANIm_percentage_identity.tab 
+```
+
+2. Using the `ANI_values.txt` file we can plot the distribution of ANI values in R by running the command below. Make sure the R script and the `ANI_values.txt` file are in the same directory before running the command. This will produce the plot called `ANI_distribution.pdf`
+
+```bash
+Rscript ani_plots.R
+```
+
+### Plot for comparing genes found with 400 genomes, to genes found with 1173
 ### Plot for entire network of correlated genes
 
 # Conclusion
