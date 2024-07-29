@@ -166,6 +166,17 @@ This command will produce a directory called `~/all_gammaproteobacteria_data/rgi
 
 ## Part4 - Building Pan-genome
 
+To begin with we will actually be building the pan-genome. We tried using the roary tool but it just didnt work with our data so we tried using panta and the run was able to finish. Keep in mind this takes 5 days to complete with max resources. To build the pan-genome panta needs the gff3 files produced from prokka so the first thing we need to do is run prokka to get gff files for our 1173 genomes
+
+1.ff
+
+2. Now that is done you can run Panta by running the command below
+
+```bash
+sbatch ~/scripts/panta_scripts/panta_030pid_e7_LD07_split_1173genomes.sh
+```
+
+
 To create the plot for the pangenome you MUST BE ON YOUR LOCAL MACHINE. You must also have matplot lib version 3.8.3 installed and numpy 1.25.0 installed as well. Once you have those installed go to the command line and run the command below. This will open a new window with the pan-genome plot present
 
 ```bash
