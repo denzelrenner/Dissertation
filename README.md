@@ -82,17 +82,20 @@ To install prokka,busco,ncbi datasets, and scoary run this command
 sbatch pipeline_tools_install.sh
 ```
 
+
 To install pyani run the command below
 
 ```bash
 sbatch installing_pyani.sh
 ```
 
+
 To install rgi run the command below
 
 ```bash
 sbatch installing_RGI.sh 
 ```
+
 
 To install panta follow the steps below
 
@@ -108,6 +111,7 @@ conda activate panta
 mamba install -y -c conda-forge -c bioconda -c anaconda -c defaults  --file requirements.txt
 pip install .
 ```
+
 
 To install goatools we followed the series of steps outlined below:
 
@@ -129,10 +133,12 @@ pip install docopt
 pip install -U goatools
 ```
 
+
 To set up an environment we use when plotting figures using R on the cloud run the command below:
 ```bash
 sbatch installing_Renv.sh 
 ```
+
 
 To install eggnog and all the associated files needed for the tool follow the steps below:
 
@@ -164,6 +170,7 @@ export EGGNOG_DATA_DIR=~/all_gammaproteobacteria_data/eggnog-mapper-data
 ```bash
 mkdir -p ~/all_gammaproteobacteria_data/eggnog-mapper-data
 ```
+
 
 To install cytoscape follow the guidance on the [cytoscape web page](https://cytoscape.org/)
 
