@@ -71,7 +71,8 @@ Before conducting any sort of analysis we need to get the nucleotide and protein
 conda activate pipeline_pckgs
 ```
 
-2. Run the script
+2. This script contains a lot of intermediate python scripts within it so i will mention what they all do. The bash script itself  will obtain the names, GCF accession codes, and other metrics for all gammaproteobacteria with a refseq annotation (there were 17009). The `filtering_gammaprotobacteria.py` script then filters this dataset to remove multiple strains of the same species, this reduces the dataset down to 1348 species to work with. The `assembly_and_metrics_grab.py` script will then run ncbi-datasets again but this time we are downloading the actual nucloeitde and protein fasta files as a zip file, rather than just the species name and metrics. The most important part of this script below is that it produces a directory with the path `~/all_gammaproteobacteria_data/assemblies` and this is where the zip files are stored.
+ 
 ```bash
 sbatch ~/scripts/data_acquisition_pipeline.sh
 ```
@@ -82,11 +83,12 @@ python3 ~/scripts/get_nucleotide_and_protein_fasta.py \
 -i ~/all_gammaproteobacteria_data/assemblies -d1 ~/all_gammaproteobacteria_data/assemblies/nucleotide_fasta_files -d2 ~/all_gammaproteobacteria_data/assemblies/protein_fasta_files
 ```
 
-This should produce three different directories. One directory is called `assemblies` and contains zip files for each genome. Another directory is called `output_data` and this contains the list of gammaproteobacteria we accesed from NCBI. The final directory is called `metric_files` and this contains files with different metrics about every genome in the data liek N50 and assembly length.
+
+Running this part of the analysis also produces a directory called `output_data`. Here you can find some plots showing the metrics of the inital 1348 species before any filtering. There is also names and NCBI accession codes for the initial 1348 species in the file called `filtered_gammaproteobacteria.txt `. The file called `all_gammaprotobacteria.txt` contains the GCF codes and other metrics for the 17006 Gammaproteobacteria with refseq annotations.
 
 ## Part2 - Quality Filtering
 
-Now that we have successfully downloaded our genomes, we want to filter out genomes that have bad quality scores, and also remove any two genomes that appear genetically identical. To do this we first deduplicated the dataset using average nucelotide identity (ANI) and then BUSCO.
+Now that we have successfully downloaded our genomes, we want to filter out genomes that have bad quality scores, and also remove any two genomes that appear genetically identical. To do this we first deduplicated the dataset using average nucelotide identity (ANI) and then remove low quality genomes using BUSCO.
 
 ### Part2A - Average Nucleotide Identity (ANI) Filtering
 So now we want to calculate the ANI for all of the species we have in our dataset. This will then allow us to deduplicate the dataset by removing any 2 species that are found to be too similar. The similarity cutoff we use is 95% so where two species are found to have an ANI of 95%, one of them is chosen by the script to be removed from the dataset. Values of 100% that are a species being compared against itself are ignored by the script. To carry out this analysis follow the steps below
