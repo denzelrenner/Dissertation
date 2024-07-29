@@ -88,7 +88,24 @@ This should produce three different directories. One directory is called `assemb
 
 Now that we have successfully downloaded our genomes, we want to filter out genomes that have bad quality scores, and also remove any two genomes that appear genetically identical. To do this we first deduplicated the dataset using average nucelotide identity (ANI) and then BUSCO.
 
-### Part2A - ANI Filtering
+### Part2A - Average Nucleotide Identity (ANI) Filtering
+So now we want to calculate the ANI for all of the species we have in our dataset. This will then allow us to deduplicate the dataset by removing any 2 species that are found to be too similar. The similarity cutoff we use is 95% so where two species are found to have an ANI of 95%, one of them is chosen by the script to be removed from the dataset. Values of 100% that are a species being compared against itself are ignored by the script. To carry out this analysis follow the steps below
+
+1. Run the main script that actually calculates ANI between species. This should take 1 day to complete
+```bash
+sbatch ~/scripts/calculating_ANI_mummer.sh
+```
+
+2. Now that all the ANI similarity matrices have been created you can run the script to deduplicate the dataset and give you your list of ANI-filtered gammaproteobacteria. Enter the command below into the command line
+```bash
+sbatch ~/scripts/deduplicate_dataset_command.sh
+```
+
+3. To get the plots showing the distribution of ANI values you should run the `` script from the command line.
+```bash
+Rscript ANI_plots.R
+```
+
 
 ### Part2B - BUSCO Filtering
 
