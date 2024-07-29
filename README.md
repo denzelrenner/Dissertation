@@ -235,4 +235,7 @@ Set Width to 175
  
 7. To adjust the colour of each node to your liking, select the `map.` column for the `Fill Color` property. There should be two rows called `Column` and `Mapping Type`. For `Column` select `name` from the dropdown menu, and for `Mapping Type` select `Discrete Mapping`. This will produce more rows for each step in the analysis and you can change the colours of their boxes here.
 
+
+### Plot for entire network of correlated genes
+
 # Conclusion
