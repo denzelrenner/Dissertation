@@ -164,6 +164,6 @@
 | OXA-23-like beta-lactamase                                                            |
 | streptogramin vat acetyltransferase                                                   |
 
-Supplementary Table S2 - List of ARG families
+Supplementary Table S2 - List of Antibiotic Resistant Gene families
 
 A list of all the ARG families discovered by RGI across 1173 genomes
