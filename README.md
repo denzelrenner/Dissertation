@@ -415,9 +415,10 @@ Rscript ani_plots.R
 ```
 
 ### Plot for comparing genes found with 400 genomes, to genes found with 1173
-### Plot for entire network of correlated genes
+### Plot for entire network of correlated genes. 
 
 ### Table for odds ratio values
+pvalue was 0.05, corrected for number of tests performed which was 23
 | Gene_Set   | COG   |     P-value |   Odds_Ratio | significance    |
 |:-----------|:------|------------:|-------------:|:----------------|
 | Positive   | A     | 1           |     0.789234 | no_significance |
