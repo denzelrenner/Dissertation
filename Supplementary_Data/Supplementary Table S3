@@ -47,5 +47,4 @@
 | Positive   | W     | 1           |     0.933741 | no_significance |
 | Negative   | W     | 1           |     0.834754 | no_significance |
 
-Supplementary Table S3 - Comparison of COG categories between different gene sets
-Each row contains the pvalue and odds ratio for fishers exact test and the odds ratio test respectivley trying to find significant differences between a COG category in a differentially correlated gene set and the pan-genome 
+ 
