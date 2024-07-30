@@ -50,7 +50,7 @@ rgi
 |[PyANI](https://github.com/widdowquinn/pyani)|Version 0.2.12|Pritchard, L., Glover, R.H., Humphris, S., Elphinstone, J.G. and Toth, I.K., 2016. Genomics and taxonomy in diagnostics for food security: soft-rotting enterobacterial plant pathogens. Analytical methods, 8(1), pp.12-24.|
 |[NCBI-Datasets](https://github.com/ncbi/datasets)|version 16.14.0|O’Leary, N.A., Cox, E., Holmes, J.B., Anderson, W.R., Falk, R., Hem, V., Tsuchiya, M.T., Schuler, G.D., Zhang, X., Torcivia, J. and Ketter, A., 2024. Exploring and retrieving sequence and metadata for species across the tree of life with NCBI Datasets. Scientific Data, 11(1), p.732.|
 |[Prokka](https://github.com/tseemann/prokka)|Version 1.14.6|Seemann, T., 2014. Prokka: rapid prokaryotic genome annotation. Bioinformatics, 30(14), pp.2068-2069.|
-|[Cytoscape](https://github.com/tseemann/prokka)|Version 3.10.2|Seemann, T., 2014. Prokka: rapid prokaryotic genome annotation. Bioinformatics, 30(14), pp.2068-2069.|
+|[Cytoscape](https://github.com/tseemann/prokka)|Version 3.10.2|Shannon, P., Markiel, A., Ozier, O., Baliga, N.S., Wang, J.T., Ramage, D., Amin, N., Schwikowski, B. and Ideker, T., 2003. Cytoscape: a software environment for integrated models of biomolecular interaction networks. Genome research, 13(11), pp.2498-2504.|
 
 ## Tool intallation 
 
