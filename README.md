@@ -377,8 +377,12 @@ This creates a new file called `cytoscape_project_pipeline.tsv` and will act as 
 6. After completing that, we should still be in the Style options for Nodes. At the bottom of the properties page uncheck the box saying `Lock node width and height`. We should be able to see the different properties for the nodes and these specific property values should be changed by selecting the `Def.` column and entering the values mentioned below.
    
 Set Border Width to 1
+
 Set Label Font Size 10
-Set Width to 175
+
+Set Width to 235
+
+Set Height to 80
  
 7. To adjust the colour of each node to your liking, select the `map.` column for the `Fill Color` property. There should be two rows called `Column` and `Mapping Type`. For `Column` select `name` from the dropdown menu, and for `Mapping Type` select `Discrete Mapping`. This will produce more rows for each step in the analysis and you can change the colours of their boxes here.
 
