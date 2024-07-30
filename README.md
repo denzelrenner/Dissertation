@@ -310,7 +310,7 @@ conda activate pipeline_pckgs
 sbatch ~/scripts/scoary_scripts/main_scoary_pipeline_groups_1173genomes_NOPAIRWISE_with_groups.sh
 ```
 
-This script does a lot of different things and uses a lot of intermediate scripts within it. Each script is commented but here is what they do. The two most important directories are the `~/all_gammaproteobacteria_data/scoary_output_1173genomes_NOPAIRWISE/parsed_output_and_plotting_files_bonferroni/across_all_gene_families` and `all_gammaproteobacteria_data/scoary_output_1173genomes_NOPAIRWISE/parsed_output_and_plotting_files_benjamini_hochberg/across_all_gene_families`. These contain files called `master_positive_correlated_genes.tsv` and `master_negative_correlated_genes.tsv`. Each of these files contain genes that were positively or negatively correlated with different the different ARG families we used, and they represent our pool of genes we use in downstream analysis.
+This script does a lot of different things and uses a lot of intermediate scripts within it. Each script is commented but here is what they do. The two most important directories are the `~/all_gammaproteobacteria_data/scoary_output_1173genomes_NOPAIRWISE/parsed_output_and_plotting_files_bonferroni/across_all_gene_families` and `all_gammaproteobacteria_data/scoary_output_1173genomes_NOPAIRWISE/parsed_output_and_plotting_files_benjamini_hochberg/across_all_gene_families`. These contain files called `master_positive_correlated_genes.tsv` and `master_negative_correlated_genes.tsv`. Each of these files contain genes that were positively or negatively correlated with different the different ARG families we used, and they represent our pool of genes we use in downstream analysis. 
 
 
 ## Part5B - Cytoscape
@@ -332,7 +332,9 @@ For shape size select 'ellipse' for Def. column
 
 For fill colour you can select the colour you want, but to get different pallettes for positively and negatively correlated genes select the Map. column and choose odds raito, select mapping type as continuous and then set the limits such that value from 0 to 1 are coloured based and value from 0 to 1 get lighter . and values from 1 and above get darker.
 
-Then go to menu bar on mac and run . go to layout , bundle edges, and then All nodes and edges
+Then go to menu bar on mac and run . go to layout , bundle edges, and then All nodes and edges.
+
+THen save the image and take the figure into powerpoint to add labels
 
 
 Search CORRELATEDARGSW:N and collapse all the genes with similar coincidence patterns
