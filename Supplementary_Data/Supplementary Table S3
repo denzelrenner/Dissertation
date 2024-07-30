@@ -1,5 +1,5 @@
 | Gene_Set   | COG   |     P-value |   Odds_Ratio | significance    |
-|:-----------|:------|------------:|-------------:|:----------------|
+|------------|-------|-------------|--------------|-----------------|
 | Positive   | A     | 1           |     0.789234 | no_significance |
 | Negative   | A     | 0.172107    |     2.82278  | no_significance |
 | Positive   | B     | 0.33755     |     1.74474  | no_significance |
