@@ -1,13 +1,10 @@
-# Dissertation - LIFE4137 CURRENTLY UNDER CONSTRUCTION /\
+# Dissertation - LIFE4137 
 
 All scripts required to run the analysis for my final individual project can be found here
 
-Note: Unless on the cloud or stated otherwise, all command line code was ran on a Mac Intel i5. In all sbatch scripts you would need to change the #SBATCH --output and
-#SBATCH --error lines at the beginning of the script such that output and errors are written to your own personal directory.
+Note: Unless on the cloud or stated otherwise, all command line code was ran on a Mac Intel i5. In all sbatch scripts you would need to change the #SBATCH --output and #SBATCH --error lines at the beginning of the script such that output and errors are written to your own personal directory.
 
 The order of the analysis carried out here is mostly the same as in the report so if there is a specific script or piece of code you may be interested in you can look for the header name for that analysis in the report, and find a similar heading name here.
-
-Dont forget input data
 
 ## Project Title: An investigation into the association between host genetic elements and antibiotic resistant phenotype
 
@@ -79,17 +76,22 @@ To install prokka,busco,ncbi datasets, and scoary run this command
 sbatch pipeline_tools_install.sh
 ```
 
+
+
 To install pyani run the command below
 
 ```bash
 sbatch installing_pyani.sh
 ```
 
+
+
 To install rgi run the command below
 
 ```bash
 sbatch installing_RGI.sh 
 ```
+
 
 
 To install panta follow the steps below
@@ -129,10 +131,12 @@ pip install -U goatools
 ```
 
 
+
 To set up an environment we use when plotting figures using R on the cloud run the command below:
 ```bash
 sbatch installing_Renv.sh 
 ```
+
 
 
 To install eggnog and all the associated files needed for the tool follow the steps below:
@@ -153,7 +157,7 @@ conda create --name eggnog python=3.8 -y
 conda install --file requirements.txt
 ```
 
-5. Add these two lines to your bash profile on ADA `~/.bash_profile`.
+5. Add these two lines to your bash profile on ADA. Your bash profile should have the path `~/.bash_profile`.
 
 ```bash
 export PATH=~/scripts/eggnog_scripts/eggnog-mapper-master:~/scripts/eggnog_scripts/eggnog-mapper-master/eggnogmapper/bin:"$PATH"
@@ -165,6 +169,7 @@ export EGGNOG_DATA_DIR=~/all_gammaproteobacteria_data/eggnog-mapper-data
 ```bash
 mkdir -p ~/all_gammaproteobacteria_data/eggnog-mapper-data
 ```
+
 
 
 To install cytoscape follow the guidance on the [cytoscape web page](https://cytoscape.org/)
