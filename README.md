@@ -174,7 +174,6 @@ mkdir -p ~/all_gammaproteobacteria_data/eggnog-mapper-data
 
 To install cytoscape follow the guidance on the [cytoscape web page](https://cytoscape.org/)
 
-Add eggnog stuff to your bash profile
 
 
 # THE ANALYSIS
@@ -202,7 +201,7 @@ python3 ~/scripts/get_nucleotide_and_protein_fasta.py \
 ```
 
 
-Running this part of the analysis also produces a directory called `output_data`. Here you can find some plots showing the metrics of the inital 1348 species before any filtering. There is also names and NCBI accession codes for the initial 1348 species in the file called `filtered_gammaproteobacteria.txt `. The file called `all_gammaprotobacteria.txt` contains the GCF codes and other metrics for the 17006 Gammaproteobacteria with refseq annotations.
+Running this part of the analysis also produces a directory called `output_data`. Here you can find some plots showing the metrics of the inital 1348 species before any filtering. There is also names and NCBI accession codes for the initial 1348 species in the file called `filtered_gammaproteobacteria.txt `. The file called `all_gammaprotobacteria.txt` contains the GCF codes and other metrics for the 17006 Gammaproteobacteria with refseq annotations and this was filtered by the `filtering_gammaproteobacteria.py` script.
 
 ## Part2 - Quality Filtering
 
@@ -219,11 +218,6 @@ sbatch ~/scripts/calculating_ANI_mummer.sh
 2. Now that all the ANI similarity matrices have been created you can run the script to deduplicate the dataset and give you your list of ANI-filtered gammaproteobacteria. Enter the command below into the command line
 ```bash
 sbatch ~/scripts/deduplicate_dataset_command.sh
-```
-
-3. To get the plots showing the distribution of ANI values you should run the `` script from the command line.
-```bash
-Rscript ANI_plots.R
 ```
 
 
@@ -251,7 +245,7 @@ busco --download_path ~/all_gammaproteobacteria_data/busco_lineage_dataset/ --do
 sbatch run_busco.sh
 ```
 
-The important files form this is a directory called `busco_plotting_output_and_summary_files` which contains a pdf file showing the different busco scors for completeness, duplicated etc.
+This `run_busco.sh` file contains two other scripts called `busco_plotting.py` and `busco_quality_check.py`. The `busco_quality_check.py` is what actually runs busco by taking the list of nucloetide fasta files downloade as input, and using the gammaproteobacteria lineage dataset. This will produce an output directory called `~/all_gammaproteobacteria_data/busco_output` with the output files from busco. Next, the `busco_quality_check.py` script will sort through these output files form busco and using the list of ANI filtered genomes as a starting point, will start removing all of the ANI-fitered genomes that also have a busco cut off score less than what is specified by the user. This will produce a new output directory as well called `~/all_gammaproteobacteria_data/busco_plotting_output_and_summary_files`, and there will be a file called `busco_filtered_gammaproteobacteria.txt` in this directory. This wiill serve as input when we run prokka later on.
 
 
 ## Part3 - Finding ARG families
