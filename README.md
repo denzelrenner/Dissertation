@@ -287,7 +287,7 @@ sbatch ~/scripts/run_prokka.sh
 sbatch ~/scripts/panta_scripts/panta_030pid_e7_LD07_split_1173genomes.sh
 ```
 
-3. To create the plot for the pan-genome YOU MUST BE ON YOUR LOCAL MACHINE. You must also have matplot lib version 3.8.3 installed and numpy 1.25.0 installed as well. Once you have those installed go to the command line and run the command below. This will open a new window with the pan-genome plot present and you can take a screenshot or save it to your machine.
+3. To create the plot for the pan-genome YOU MUST BE ON YOUR LOCAL MACHINE. You must also have matplot lib version 3.8.3 installed and numpy 1.25.0 installed as well. Once you have those installed go to the command line and run the command below. This will open a new window with the pan-genome plot present and you can take a screenshot or save it to your machine. This script can be found in the directory `~/scripts/panta_scripts`.
 
 ```bash
 python3 pangenome_plot.py
@@ -308,27 +308,35 @@ This script does a lot of different things and uses a lot of intermediate script
 
 
 ## Part5B - Cytoscape
-Because the script above already produced the input needed for cytoscape there is no actual code for this section. Only a series of steps on how to reproduce the figures used in the paper.
+
+We wanted to create a network showing associations between a single ARG family and different genes. The first thing you need to do is get a tsv file for a single ARG. This tsv file should have the genes positively and negatively correlated with it. We will be using the genes we get when pvalues are corrected using the benjamini hockhberg. To accomplish this run this command in the command line
+
+```bash
+
+conda activate pipeline_pckgs
+
+python3 cytoscape_input_singleARG.py --input_dir ~/all_gammaproteobacteria_data/scoary_output_1173genomes_NOPAIRWISE_ORIGINFAL/parsed_output_and_plotting_files_benjamini_hochberg/resistance_nodulation_cell_division__RND__antibiotic_efflux_pump
+
+```
 
 
 ### Figure X
-To make figure X you first load the tsv file into cytoscape
 
-when in cytoscape there is a search bar near the top-right of the window. Select this and search 'positive' , this will highlight all the genes with a positive correlation to the ARG. Then drag these to one side of the screen. Go the search bar again and search 'negative', this will highlight all the genes with a negative correlation to the ARG. 
+1. Send the file from ADA to your local machine and load the tsv file into cytoscape
 
-Go to the styles menu bar
+2.When in cytoscape there is a search bar near the top-right of the window. Select this and search 'positive' , this will highlight all the genes with a positive correlation to the ARG. Then drag these to one side of the screen. Go the search bar again and search 'negative', this will highlight all the genes with a negative correlation to the ARG. 
 
-Tick Lock node width and height
+3.Go to the styles menu bar and tick `Lock node width and height`
 
-Set size to 400 by selecting the Def. column, for Map. column select correlation type as the column, discrete mapping type, set size to 40 for positive and negative
+4.Set node size to 400 by selecting the Def. column. For the Map. column select correlation type as the column, choose discrete mapping type and set size to 40 for positive and negative
 
-For shape size select 'ellipse' for Def. column
+5.For shape size select 'ellipse' for Def. column
 
-For fill colour you can select the colour you want, but to get different pallettes for positively and negatively correlated genes select the Map. column and choose odds raito, select mapping type as continuous and then set the limits such that value from 0 to 1 are coloured based and value from 0 to 1 get lighter . and values from 1 and above get darker.
+6.For fill colour you can select the colour you want, but to get different pallettes for positively and negatively correlated genes select the Map. column and choose odds raito, select mapping type as continuous and then set the limits such that value from 0 to 1 are coloured differently than values that are one and greater. In my case values of 0 to 1 are blue and values from 1 to above are orange.
 
-Then go to menu bar on mac and run . go to layout , bundle edges, and then All nodes and edges.
+7.Then go to the menu bar on your local pc and select layout , then bundle edges, and then `All nodes and edges`.
 
-THen save the image and take the figure into powerpoint to add labels
+8.Then save the image and take the figure into powerpoint to add labels
 
 
 Search CORRELATEDARGSW:N and collapse all the genes with similar coincidence patterns
