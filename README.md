@@ -360,17 +360,13 @@ To accomplish this you can simply run the command below. Verified by me
 sbatch ~/scripts/goatools_scripts/run_goatools_1173genomes_UPDATED.sh
 ```
 
-Again, to breakdown the script a bit and the output you get from running it
+Again, to breakdown the script a bit and the output you get from running it.
 
 # Part6C - COG Categories
-For the COG categories we want to . This is accomplished by running the commands below
+For the COG categories we want to perform a fishers exact test and then an odds ratio test to check for overrepresentation. This is accomplished by running the commands below. It contains the script called `cog_calculations_and_plots.py` which takes the genes in the pangenome, the significant positively correlated genes after applying Benjamini Hochberg correction method, and the negatively correlated genes after applying Benjamini Hochberg correction method. The script then looks for a significant difference in COG categories between the pangenome and both correlated gene sets. The most important files from running this script are `~/all_gammaproteobacteria_data/COG_calculation_1173_genomes/stats_output.txt` and `~/all_gammaproteobacteria_data/COG_calculation_1173_genomes/COG_plotting.R`. The first file mentioned contains pvalues and odds ratio values for all the statistics carried out in python and is the Supplementary Table S3 in our supplementary figures. The R script produces the plots we use in the main paper showing the percentage of COGs in the pangenome and differentially correlated gene sets. The plots produced by the R script are called `COG_category_plot_positive.pdf` and `COG_category_plot_negative.pdf`
 
 ```bash
-conda activate pipeline_pckgs
-
 sbatch run_COG_analysis.sh
-
-python3 ~/scripts/cog_scripts/cog_calculations.py -od ~/all_gammaproteobacteria_data/COG_calculation_1173_genomes --annotation_file ~/all_gammaproteobacteria_data/eggnog_pangenome/whole_dataset.emapper.annotations --positively_correlated_genes ~/all_gammaproteobacteria_data/scoary_output_1173genomes_NOPAIRWISE_WITH_GROUPS/parsed_output_and_plotting_files_benjamini_hochberg/across_all_gene_families/master_positive_correlated_genes.tsv --negatively_correlated_genes ~/all_gammaproteobacteria_data/scoary_output_1173genomes_NOPAIRWISE_WITH_GROUPS/parsed_output_and_plotting_files_benjamini_hochberg/across_all_gene_families/master_negative_correlated_genes.tsv --Rtab_file ~/all_gammaproteobacteria_data/panta_output/panta_030pid_e7_LD07_split_1173_genomes_with_sflag_sotruenosplit/gene_presence_absence.Rtab
 ```
 
 Again, this script does a lot of different things. It takes the annotations file produced from EggNOG-mapper in [the EggNOG-mapper step of the analysis](#part6a---eggnog-mapper)
