@@ -261,19 +261,19 @@ conda activate pipeline_pckgs
 
 2. We initally stored the protein fasta files for all 1348 files in the [Data Acquisition](#part1---data-acquisition) portion of this analysis. We now want to create a new directory which only has protein fasta files for the final dataset of 1173 genomes. These files will act as input for RGI to then identify ARG families. To do this enter the command below into the command line.
 ```bash
-python3 filtering_data_directories.py -id ~/all_gammaproteobacteria_data/assemblies/protein_fasta_files --input_file ~/all_gammaproteobacteria_data/busco_plotting_output_and_summary_files/busco_filtered_gammaproteobacteria_correction_names.txt -od ~/all_gammaproteobacteria_data/rgi_input_protein_fasta_1173_genomes
+python3 filtering_data_directories.py -id ~/all_gammaproteobacteria_data/assemblies/protein_fasta_files --input_file ~/all_gammaproteobacteria_data/busco_plotting_output_and_summary_files/busco_filtered_gammaproteobacteria.txt -od ~/all_gammaproteobacteria_data/rgi_input_protein_fasta_1173_genomes
 ```
 
-3. Now we can actually run RGI to get the different ARG families. The script we will use is called `rgi_main_pipeline_1173_genomes.sh` and it uses some other python scripts to create a final list of ARG families. To accomplish this, follow the commands below.
+3. Now we can actually run RGI to get the different ARG families. The script we will use is called `rgi_main_pipeline_1173_genomes.sh` and it uses another python script to create a final list of ARG families. The python script used is called `run_RGI.py` and this script is what actually runs RGI and identifies the different ARG families across our species. The script also allows you to specify whether you want your results to only contain Perfect, Strict, or Loose hits from RGI. To accomplish this, follow the commands below.
 ```bash
 sbatch ~/scripts/rgi_scripts/rgi_main_pipeline_1173_genomes.sh
 ```
 
-This command will produce a directory called `~/all_gammaproteobacteria_data/rgi_output_1173_genomes/gene_family_files`, and within this directory there will be a file called `unique_gene_families.txt` and it contains a list of all ARG families used in this study
+This command will produce a directory called `~/all_gammaproteobacteria_data/rgi_output_1173_genomes/gene_family_files`, and within this directory there will be a file called `unique_gene_families.txt` and it contains a list of all ARG families used in this study. This list is provided in the supplementary data
 
 ## Part4 - Building Pan-genome
 
-To begin with we will actually be building the pan-genome. We tried using the roary tool but it just didnt work with our data so we tried using panta and the run was able to finish. Keep in mind this takes 5 days to complete with max resources. To build the pan-genome panta needs the gff3 files produced from prokka so the first thing we need to do is run prokka to get gff files for our 1173 genomes
+We tried using the roary tool but it just didnt work with our data so we tried using panta and the run was able to finish. Keep in mind this takes 5 days to complete with max resources. To build the pan-genome panta needs the gff3 files produced from prokka so the first thing we need to do is run prokka to get gff files for our 1173 genomes
 
 1.Running the command below will run prokka for all the 1173 genomes in the study. The gff files will be located in the directory with this path `~/all_gammaproteobacteria_data/prokka_output_files_busco_filtered_input/all_species_gff`. There is an intermediate script in the `run_prokka.sh` bash script. This python script is what actually runs the prokka command, and places files in their appropriate directories. It takes the `busco_filtered_gammaproteobacteria.txt` as well as the list of nucloetide and protein files we downloaded for the initial 1348 genomes. By taking in the list of genes filtered by busco the script will only run prokka for the genomes tht passed both the ANI and busco filtering steps. The intermediate script is called `running_prokka_for_roary.py`. We tried using roary before we switched to panta. That is why the file is named that way
 
@@ -281,7 +281,7 @@ To begin with we will actually be building the pan-genome. We tried using the ro
 sbatch ~/scripts/run_prokka.sh
 ```
 
-2. Now that is done you can run Panta by running the command below. It will use the gff files just produced to build the pan-genome
+2. Now that is done you can run Panta by running the command below. It will use the gff files just produced to build the pan-genome. This will take 5 days to complete
 
 ```bash
 sbatch ~/scripts/panta_scripts/panta_030pid_e7_LD07_split_1173genomes.sh
