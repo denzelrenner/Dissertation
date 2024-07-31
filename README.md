@@ -420,5 +420,3 @@ python3 ANImatrix_to_list.py --output_directory ./ -i ANIm_percentage_identity.t
 Rscript ani_plots.R
 ```
 
-
-# Conclusion
