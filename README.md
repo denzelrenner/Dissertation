@@ -6,7 +6,7 @@ Note: Unless on the cloud or stated otherwise, all command line code was ran on 
 
 The order of the analysis carried out here is mostly the same as in the report so if there is a specific script or piece of code you may be interested in you can look for the header name for that analysis in the report, and find a similar heading name here.
 
-## Project Title: An investigation into the association between host genetic elements and antibiotic resistant phenotype
+## Project Title: Analysis of the coincidence patterns of non-antibiotic resistance genes with antibiotic resistance gene families in Gammaproteobacteria
 
 ## Why carry out this analysis?
 
