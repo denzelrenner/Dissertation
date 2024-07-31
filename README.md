@@ -166,7 +166,11 @@ mkdir -p ~/all_gammaproteobacteria_data/eggnog-mapper-data
 
 To install cytoscape follow the guidance on the [cytoscape web page](https://cytoscape.org/)
 
-
+make an output and error directory, and a directory to host most of the output
+```bash
+mkdir -p ~/OnE
+mkdir -p ~/all_gammaproteobacteria_data/
+```
 
 # THE ANALYSIS
 
