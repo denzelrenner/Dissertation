@@ -320,7 +320,7 @@ python3 cytoscape_input_singleARG.py --input_dir ~/all_gammaproteobacteria_data/
 ```
 
 
-### Figure X
+### Figure 
 
 1. Send the file from ADA to your local machine and load the tsv file into cytoscape
 
@@ -347,22 +347,21 @@ Select all nodes in the star
 We have successfully found genes that were positively or negatively correlated with the presence of the ARG families in this study. The next piece of analysis involves looking for enrichemnt of GO terms, and over-representation of COG categories in our positively and negatively correlated genes compared to the entire pan-genome. To do this, we first need to annotate the protein sequences for each gene in the pangenome with COG categories and GO terms. Then we can use GOATOOLS, and the SciPY python package to look for enrichment and over-representation.
 
 # Part6A - EggNOG-mapper
-To annotate the pan-genome with GO terms and COG categories run the command below. Verified by me
+To annotate the pan-genome with GO terms and COG categories run the command below. This will produce a directory called `~/all_gammaproteobacteria_data/eggnog_pangenome` and the file of interest is called  `whole_datase..emapper.annotations`. By default 
 
 ```bash
 sbatch ~/scripts/eggnog_scripts/emapper_pangenome_input.sh
 ```
-This will produce a file called something.annotations, and it contains a tsv of genes and their GO terms, and COG annotations.
+
 
 # Part6B - Goatools
 
-To accomplish this you can simply run the command below. Verified by me
-
+To find enrichment of GO terms in differentially correlated genes relative to the pan-genome run the command below. It contains 2 scripts. `create_goatools_input_files.py` takes the list of positively and negatively correlated as input. As well as all genes in the pan-genome and the GO terms associated with the. Next goatools is ran to find enrichment and we use the FDR to find significance. After that the `plot_enriched_terms.py` file creates a plot in R to show the top 15 significant terms for each of the three ontologies
+.
 ```bash
 sbatch ~/scripts/goatools_scripts/run_goatools_1173genomes_UPDATED.sh
 ```
 
-Again, to breakdown the script a bit and the output you get from running it.
 
 # Part6C - COG Categories
 For the COG categories we want to perform a fishers exact test and then an odds ratio test to check for overrepresentation. This is accomplished by running the commands below. It contains the script called `cog_calculations_and_plots.py` which takes the genes in the pangenome, the significant positively correlated genes after applying Benjamini Hochberg correction method, and the negatively correlated genes after applying Benjamini Hochberg correction method. The script then looks for a significant difference in COG categories between the pangenome and both correlated gene sets. The most important files from running this script are `~/all_gammaproteobacteria_data/COG_calculation_1173_genomes/stats_output.txt` and `~/all_gammaproteobacteria_data/COG_calculation_1173_genomes/COG_plotting.R`. The first file mentioned contains pvalues and odds ratio values for all the statistics carried out in python and is the Supplementary Table S3 in our supplementary figures. The R script produces the plots we use in the main paper showing the percentage of COGs in the pangenome and differentially correlated gene sets. The plots produced by the R script are called `COG_category_plot_positive.pdf` and `COG_category_plot_negative.pdf`
