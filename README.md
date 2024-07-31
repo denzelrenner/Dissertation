@@ -311,7 +311,7 @@ python3 cytoscape_input_singleARG.py --input_dir ~/all_gammaproteobacteria_data/
 
 ```
 
-
+This should produce a file called `cytoscape_input_df.tsv` and is what we will import into cytoscape
 ### Figure 
 
 1. Send the file from ADA to your local machine and load the tsv file into cytoscape
