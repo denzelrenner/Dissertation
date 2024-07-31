@@ -13,7 +13,7 @@ The order of the analysis carried out here is mostly the same as in the report s
 Antibiotic resistance is a global crisis that continues to worsen as the rate of discovery for novel antimicrobial therapies reduces and antibiotics continue to be misused (misuse of antibiotics continues to rise in healthcare and agriculture), allowing for bacteria to develop resistance mechanisms to multiple different antibiotics. Typically, a single antibiotic resistance gene is considered responsible for the resistance phenotype of bacteria, and there is ongoing interest in using novel tools to discover and predict new antibiotic resistant loci thought to contribute to a resistant phenotype. However, there is increasing evidence suggesting that there are many genes that are not ARGs but may have a role in confering a resistance phenotype.
 
 ## What are the aims of our analysis?
-
+The aim of this study was to examine the coincidence patterns between ARG families and non-ARGs found in a diverse range of Gammaproteobacteria, where the presence of an ARG family implies a species is antibiotic resistant. We focus on how the presence of ARG families either negatively or positively influences the likelihood of other genes being found in our genomes, and whether these identified genes might be important for resistant phenotypes. The use of ARG families and not a single ARG to infer resistance ensures we do not conclude the resistance phenotype is controlled by a single gene. We also investigated if there were cluster of orthologous groups (COG) categories or gene ontology (GO) terms that were enriched in genes more likely to be absent or present when an ARG family is present relative to the pan-genome. 
 
 
 ## What are the expected outcomes?
