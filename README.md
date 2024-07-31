@@ -10,13 +10,14 @@ The order of the analysis carried out here is mostly the same as in the report s
 
 ## Why carry out this analysis?
 
-Antibiotic resistance is a global crisis that continues to worsen as the rate of discovery for novel antimicrobial therapies reduces and antibiotics continue to be misused (misuse of antibiotics continues to rise in healthcare and agriculture), allowing for bacteria to develop resistance mechanisms to multiple different antibiotics. Currently, a single antibiotic resistance gene is considered responsible for the resistance phenotype of bacteria, and there is ongoing interest in using novel tools to discover and predict new antibiotic resistant loci thought to contribute to a resistant phenotype. However, it is more likely that there are many genes that are not ARGs but have a role in confering a resistance phenotype.
+Antibiotic resistance is a global crisis that continues to worsen as the rate of discovery for novel antimicrobial therapies reduces and antibiotics continue to be misused (misuse of antibiotics continues to rise in healthcare and agriculture), allowing for bacteria to develop resistance mechanisms to multiple different antibiotics. Typically, a single antibiotic resistance gene is considered responsible for the resistance phenotype of bacteria, and there is ongoing interest in using novel tools to discover and predict new antibiotic resistant loci thought to contribute to a resistant phenotype. However, there is increasing evidence suggesting that there are many genes that are not ARGs but may have a role in confering a resistance phenotype.
 
 ## What are the aims of our analysis?
 
 
+
 ## What are the expected outcomes?
-We hypothesize that there will be several genes, belonging to different compartments of the cell, that are correlated with the presence of ARG families, and these correlated genes will be enriched for different GO terms and COG categories relative to the entire pangenome that ultimatley affect the resistant phenotype
+We hypothesize that there will be several genes, which function in different compartments of the bacterial cell, that are differently correlated with the presence of ARG families and are involved in processes that could make them potential targets for antibiotics.
 
 
 # Prerequisites
