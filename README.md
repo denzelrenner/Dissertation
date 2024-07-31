@@ -13,18 +13,10 @@ The order of the analysis carried out here is mostly the same as in the report s
 Antibiotic resistance is a global crisis that continues to worsen as the rate of discovery for novel antimicrobial therapies reduces and antibiotics continue to be misused (misuse of antibiotics continues to rise in healthcare and agriculture), allowing for bacteria to develop resistance mechanisms to multiple different antibiotics. Currently, a single antibiotic resistance gene is considered responsible for the resistance phenotype of bacteria, and there is ongoing interest in using novel tools to discover and predict new antibiotic resistant loci thought to contribute to a resistant phenotype. However, it is more likely that there are many genes that are not ARGs but have a role in confering a resistance phenotype.
 
 ## What are the aims of our analysis?
-The aim of this study was to examine the relationship between antibiotic resistance, which is implied through the presence of an antibiotic resistance gene (ARG) family, and other unique genes within host genomes of diverse Gammaproteobacteria, focusing on how the presence of ARG families correlates with the presence or absence of various other genes in the genome. The use of ARG families and not a single ARG to determine our resistant phenotypes ensures we are not labelling resistance based on a single gene. We also investigated if there were COG categories or GO terms that were enriched in genes positively and negatively correlated with the presence of ARG families relative to the entire pan-genome.
+
 
 ## What are the expected outcomes?
 We hypothesize that there will be several genes, belonging to different compartments of the cell, that are correlated with the presence of ARG families, and these correlated genes will be enriched for different GO terms and COG categories relative to the entire pangenome that ultimatley affect the resistant phenotype
-
-# Table of Contents
-
-[Part1 - Data Acquisition](#part1---data-acquisition)
-
-[Part2 - Quality Filtering](#part2---quality-filtering)
-
-[Part3 - Finding ARG families](#part3---finding-arg-families)
 
 
 # Prerequisites
@@ -171,7 +163,6 @@ mkdir -p ~/all_gammaproteobacteria_data/eggnog-mapper-data
 ```
 
 
-
 To install cytoscape follow the guidance on the [cytoscape web page](https://cytoscape.org/)
 
 
@@ -294,17 +285,17 @@ python3 pangenome_plot.py
 ```
 
 ## Part5 - Running Scoary
-Now that we have the unique ARG families in our dataset, we essentially have the traits that will be used by scoary. For the purpose of our analysis we are interested in correlation and coincidence, rather than causative interpretations. To do this you can simply enter the two command into the command line.
+Now that we have the unique ARG families in our dataset, we essentially have the traits that will be used by scoary. For the purpose of our analysis we are interested in correlation and coincidence, rather than causative interpretations. To run scaory simply enter the two command into the command line. A file in the scoary script (`create_scoarytraits_file_genefamily_batched_files.py`) first creates a traits file where for each ARG family, we generated a data matrix where values of 1 indicated the presence of the ARG family in a genome and 0 indicated its absence. Next the `panta_roary_conversion.py` scripts makes the format of the panta output compatible with scoary  Scoary is then ran for each trait and when that has completed a script called `~/scripts/scoary_scripts/parsing_scoary_output_NOPAIRWISE_corrected.py` looks through all the output and creates separate directories for results found significant using bonferroni or benjamini hochberg correction methods
 
 ## Part5A - Correlation
 
 ```bash
 conda activate pipeline_pckgs
 
-sbatch ~/scripts/scoary_scripts/main_scoary_pipeline_groups_1173genomes_NOPAIRWISE_with_groups.sh
+sbatch ~/scripts/scoary_scripts/main_scoary_pipeline_groups_1173genomes.sh
 ```
 
-This script does a lot of different things and uses a lot of intermediate scripts within it. Each script is commented but here is what they do. The two most important directories are the `~/all_gammaproteobacteria_data/scoary_output_1173genomes_NOPAIRWISE/parsed_output_and_plotting_files_bonferroni/across_all_gene_families` and `all_gammaproteobacteria_data/scoary_output_1173genomes_NOPAIRWISE/parsed_output_and_plotting_files_benjamini_hochberg/across_all_gene_families`. These contain files called `master_positive_correlated_genes.tsv` and `master_negative_correlated_genes.tsv`. Each of these files contain genes that were positively or negatively correlated with different the different ARG families we used, and they represent our pool of genes we use in downstream analysis. 
+ The two most important directories are the `~/all_gammaproteobacteria_data/scoary_output_1173genomes_NOPAIRWISE/parsed_output_and_plotting_files_bonferroni/across_all_gene_families` and `all_gammaproteobacteria_data/scoary_output_1173genomes_NOPAIRWISE/parsed_output_and_plotting_files_benjamini_hochberg/across_all_gene_families`. These contain files called `master_positive_correlated_genes.tsv` and `master_negative_correlated_genes.tsv`. Each of these files contain genes that were positively or negatively correlated with different the different ARG families we used, and they represent our pool of genes we use in downstream analysis. Finally, with a script called ` ~/scripts/scoary_scripts/create_significance_comparison_script.py ` we create a plot detailing the the frequency of siginficant results when you correct pvalues uing the bonferroni method or benjamini-hochberg.
 
 
 ## Part5B - Cytoscape
@@ -315,7 +306,7 @@ We wanted to create a network showing associations between a single ARG family a
 
 conda activate pipeline_pckgs
 
-python3 cytoscape_input_singleARG.py --input_dir ~/all_gammaproteobacteria_data/scoary_output_1173genomes_NOPAIRWISE_ORIGINFAL/parsed_output_and_plotting_files_benjamini_hochberg/resistance_nodulation_cell_division__RND__antibiotic_efflux_pump
+python3 cytoscape_input_singleARG.py --input_dir ~/all_gammaproteobacteria_data/scoary_output_1173genomes_NOPAIRWISE/parsed_output_and_plotting_files_benjamini_hochberg/resistance_nodulation_cell_division__RND__antibiotic_efflux_pump
 
 ```
 
@@ -337,10 +328,6 @@ python3 cytoscape_input_singleARG.py --input_dir ~/all_gammaproteobacteria_data/
 7.Then go to the menu bar on your local pc and select layout , then bundle edges, and then `All nodes and edges`.
 
 8.Then save the image and take the figure into powerpoint to add labels
-
-
-Search CORRELATEDARGSW:N and collapse all the genes with similar coincidence patterns
-Select all nodes in the star
 
 ## Part6 - Annotating the Pan-genome
 
