@@ -364,17 +364,15 @@ remotes::install_github("clauswilke/colorblindr")\n'''
 
     Rplotter_file.write("ggplot(df_CC, aes(x = name, y = p_fdr_bh,fill=correlation_type)) +\n")
     Rplotter_file.write("geom_bar(stat = 'identity',position = 'identity') +\n")
-    # Rplotter_file.write("scale_fill_gradient(low = 'lightblue', high = 'darkblue') +\n")
+    
     Rplotter_file.write("labs(title = 'Cellular Component',x = 'GO Term',y = '-log10(p-value)',fill = 'Correlation Type') +\n")
     Rplotter_file.write("theme_bw(base_size = 18)+\n")
-    #Rplotter_file.write("theme_minimal() +\n")
-    # Rplotter_file.write('theme(panel.background = element_rect(color="#FFFFFF", fill="white"))+\n')
-    # Rplotter_file.write("theme(panel.grid.minor = element_blank())+\n")
-    # Rplotter_file.write("theme(panel.grid.major = element_blank())+\n")
+
     Rplotter_file.write('theme(axis.line = element_line(colour = "black"),')
     Rplotter_file.write("panel.border = element_blank(),\n")
     Rplotter_file.write("panel.grid.minor = element_blank(),\n")
     Rplotter_file.write("panel.grid.major = element_blank(),\n")
+    # change size of the text for the axis and axis title, figure legend and plot title
     Rplotter_file.write("axis.text = element_text(size=40), \n")
     Rplotter_file.write("legend.text = element_text(size=50), \n")
     Rplotter_file.write("plot.title = element_text(size=50), \n")
@@ -392,7 +390,6 @@ remotes::install_github("clauswilke/colorblindr")\n'''
     Rplotter_file.write(f"pdf('{args.output_dir}/MF_combined_top_{args.number_of_terms}_GOterms.pdf', width = 30, height = 30)\n")
     Rplotter_file.write("ggplot(df_MF, aes(x = name, y = p_fdr_bh,fill=correlation_type)) +\n")
     Rplotter_file.write("geom_bar(stat = 'identity',position = 'identity') +\n")
-    # Rplotter_file.write("scale_fill_gradient(low = 'lightblue', high = 'darkblue') +\n")
     Rplotter_file.write("labs(title = 'Molecular Function',x = 'GO Term',y = '-log10(p-value)',fill = 'Correlation Type') +\n")
     #Rplotter_file.write("theme_minimal() +\n")
     Rplotter_file.write("theme_bw(base_size = 18) +\n")
