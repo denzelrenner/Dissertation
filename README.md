@@ -24,20 +24,17 @@ We hypothesize that there will be several genes, belonging to different compartm
 # Table of Contents
 
 [Part1 - Data Acquisition](#part1---data-acquisition)
+
 [Part2 - Quality Filtering](#part2---quality-filtering)
+
 [Part3 - Finding ARG families](#part3---finding-arg-families)
+
 
 # Prerequisites
 
 ## Tool versions and links
 These are all the tools that were used in our analysis with versions and links provided where applicable. Dependencies for certain packages, and their versions, are placed in parentheses. Some references were chosen based on what was recommended on the tool's online help page/documentation.
 
-busco
-scoary
-pyani
-datasets
-prokka
-rgi
 
 | Tool | Version | Reference(Harvard Style) |
 |------|---------|-----------|
@@ -62,7 +59,7 @@ conda activate env
 conda env export > env_name.yaml
 ```
 
-Firstly copy the yaml files to the HPC using rsync or scp and then type in the following commands. This will give you the same conda environment I have used in my analysis without having to install any packages yourself.
+The yaml files are located in this github repository in a folder called `yaml_file`. Firstly copy the yaml files to the HPC using rsync or scp and then type in the following commands. This will give you the same conda environment I have used in my analysis without having to install any packages yourself.
 
 ```bash
 conda env create -f goatoolsenv.yaml
@@ -74,7 +71,7 @@ conda env create -f pipeline_pckgs.yaml
 conda env create -f Renv.yaml
 ```
 
-Alternatively, the guidance below outlines the scripts,steps or commands that have to be ran to install some of the tools needed to reproduce our results.
+Alternatively, you may want to install all the tools manually and the guidance below outlines the scripts,steps or commands that have to be ran to install the tools needed to reproduce our results.
 
 To install prokka,busco,ncbi datasets, and scoary run this command
 
@@ -82,13 +79,11 @@ To install prokka,busco,ncbi datasets, and scoary run this command
 sbatch pipeline_tools_install.sh
 ```
 
-
 To install pyani run the command below
 
 ```bash
 sbatch installing_pyani.sh
 ```
-
 
 To install rgi run the command below
 
