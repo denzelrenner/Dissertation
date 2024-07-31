@@ -275,7 +275,7 @@ This command will produce a directory called `~/all_gammaproteobacteria_data/rgi
 
 To begin with we will actually be building the pan-genome. We tried using the roary tool but it just didnt work with our data so we tried using panta and the run was able to finish. Keep in mind this takes 5 days to complete with max resources. To build the pan-genome panta needs the gff3 files produced from prokka so the first thing we need to do is run prokka to get gff files for our 1173 genomes
 
-1.Running the command below will run prokka for all the 1173 genomes in the study. The gff files will be located in the directory with this path `~/all_gammaproteobacteria_data/prokka_output_files_busco_filtered_input/all_species_gff`.
+1.Running the command below will run prokka for all the 1173 genomes in the study. The gff files will be located in the directory with this path `~/all_gammaproteobacteria_data/prokka_output_files_busco_filtered_input/all_species_gff`. There is an intermediate script in the `run_prokka.sh` bash script. This python script is what actually runs the prokka command, and places files in their appropriate directories. It takes the `busco_filtered_gammaproteobacteria.txt` as well as the list of nucloetide and protein files we downloaded for the initial 1348 genomes. By taking in the list of genes filtered by busco the script will only run prokka for the genomes tht passed both the ANI and busco filtering steps. The intermediate script is called `running_prokka_for_roary.py`. We tried using roary before we switched to panta. That is why the file is named that way
 
 ```bash
 sbatch ~/scripts/run_prokka.sh
