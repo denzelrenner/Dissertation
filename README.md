@@ -399,7 +399,7 @@ tidyr -> ‘1.3.0’
 gridExtra -> 2.3
 grid -> ‘4.3.1’
 
-Once those are all downloaded, you want to use scp or rsync to copy the file with all the busco metrics data for our 1173 genomes from ADA. The file you need has the path `~/all_gammaproteobacteria_data/busco_plotting_output_and_summary_files/sorted_by_complete_all_species_busco_metrics.tsv`. Once you have done that you can  run this command from your local machine. Make sure the R script is in your current directory. The file produced from this script will be called ``. The first argument of the command is the working directory you want to set, and the second is the path to the `sorted_by_complete_all_species_busco_metrics.tsv` file on your machine.
+Once those are all downloaded, you want to use scp or rsync to copy the file with all the busco metrics data for our 1173 genomes from ADA. The file you need has the path `~/all_gammaproteobacteria_data/busco_plotting_output_and_summary_files/sorted_by_complete_all_species_busco_metrics.tsv`. Once you have done that you can  run this command from your local machine. Make sure the R script is in your current directory. The file produced from this script will be called ``. The first argument of the command is the working directory you want to set, and the second is the path to the `sorted_by_complete_all_species_busco_metrics.tsv` file on your machine. The plot in your output directory will be called `busco_completeness.pdf`
 
 ```bash
 Rscript plot_busco_completeness.R ./ sorted_by_complete_all_species_busco_metrics.tsv
