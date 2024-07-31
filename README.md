@@ -210,12 +210,12 @@ Now that we have successfully downloaded our genomes, we want to filter out geno
 ### Part2A - Average Nucleotide Identity (ANI) Filtering
 So now we want to calculate the ANI for all of the species we have in our dataset. This will then allow us to deduplicate the dataset by removing any 2 species that are found to be too similar. The similarity cutoff we use is 95% so where two species are found to have an ANI of 95%, one of them is chosen by the script to be removed from the dataset. Values of 100% that are a species being compared against itself are ignored by the script. To carry out this analysis follow the steps below
 
-1. Run the main script that actually calculates ANI between species. This should take 1 day to complete
+1. Run the main script that actually calculates ANI between species by running pyANI. The output will be sent to a directory called `~/all_gammaproteobacteria_data/ANIm_output `. This should take 1 to 3 days to complete depending on the resources provided
 ```bash
 sbatch ~/scripts/calculating_ANI_mummer.sh
 ```
 
-2. Now that all the ANI similarity matrices have been created you can run the script to deduplicate the dataset and give you your list of ANI-filtered gammaproteobacteria. Enter the command below into the command line
+2. Now that all the ANI similarity matrices have been created you can run the script below to deduplicate the dataset and give you your list of ANI-filtered gammaproteobacteria. Enter the command below into the command line. This script has a python script with the path `~/scripts/deduplicate_dataset.py` inside of it. This script takes the ANI matrix produced by pyANI in the command above, and it uses some logic and code i wrote to remove one of any two species that are more than 95% similar in terms of ANI values. This then produces a list of ANI-filter gammaproteobacteria. This step reduced the initial genome set from 1348 to 1237. The file with ANI-filtered species has the path `~/all_gammaproteobacteria_data/output_data/final_deduplicated_gammaproteobacteria.txt`
 ```bash
 sbatch ~/scripts/deduplicate_dataset_command.sh
 ```
